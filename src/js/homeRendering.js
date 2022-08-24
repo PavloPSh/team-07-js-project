@@ -1,7 +1,5 @@
 import filmsAPI from './apiServiсe';
 import { onScroll, onToTopBtn } from './scroll';
-import onFormSubmit from './form';
-import Notiflix from 'notiflix';
 
 export const trendingFilms = new filmsAPI();
 
@@ -52,6 +50,7 @@ export function TrendingFilms(event) {
 }
 logoLink.addEventListener('click', TrendingFilms);
 homeBtn.addEventListener('click', TrendingFilms);
+window.addEventListener('load', TrendingFilms);
 
 function LoadMorePhoto() {
   console.log('start');
@@ -120,7 +119,6 @@ export const renderCard = function (
         <img src="${IMG_URL + poster_path}" alt ="${
     title ?? name
   }" class="card__poster">
-        
             <h2 class="card__title">${title ?? name}</h2>
             <p class="card__genre">${genre} | ${
     release_date ? release_date.slice(0, 4) : first_air_date.slice(0, 4)
