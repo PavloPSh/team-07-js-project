@@ -1,5 +1,5 @@
 import filmsAPI from './apiServiсe';
-import { onScroll, onToTopBtn } from './scroll';
+// import { onScroll, onToTopBtn } from './scroll';
 
 export const trendingFilms = new filmsAPI();
 
