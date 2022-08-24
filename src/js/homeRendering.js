@@ -6,8 +6,8 @@ import Notiflix from 'notiflix';
 export const trendingFilms = new filmsAPI();
 
 const mainSection = document.querySelector('.card__list');
-
 const homeBtn = document.querySelector('.header__nav-link');
+const logoLink = document.querySelector('.header__logo');
 
 const IMG_URL = `https://image.tmdb.org/t/p/w500`;
 
@@ -50,6 +50,7 @@ export function TrendingFilms(event) {
     infinteScroll();
   }, 500);
 }
+logoLink.addEventListener('click', TrendingFilms);
 homeBtn.addEventListener('click', TrendingFilms);
 
 function LoadMorePhoto() {
