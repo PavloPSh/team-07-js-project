@@ -1,4 +1,5 @@
 import Notiflix from "notiflix";
+import './modal-footer';
 
 
 
