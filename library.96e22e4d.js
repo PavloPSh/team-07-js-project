@@ -1,2 +1,0 @@
-!function(){var t=document.querySelector('button[data-action="toHome"]'),n=document.querySelector('button[data-action="toLibrary"]');document.querySelector(".icon-button").addEventListener("click",(function(){document.location.assign("/index.html")})),t.addEventListener("click",(function(){document.location.assign("/index.html")})),n.addEventListener("click",(function(){document.location.assign("/library.html")}))}();
-//# sourceMappingURL=library.96e22e4d.js.map
