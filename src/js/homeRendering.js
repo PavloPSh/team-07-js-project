@@ -3,7 +3,7 @@ import { onScroll, onToTopBtn } from './scroll';
 import onFormSubmit from './form';
 import Notiflix from 'notiflix';
 
-export const trendingFilms = new filmsAPI();
+const trendingFilms = new filmsAPI();
 
 const mainSection = document.querySelector('.card__list');
 
