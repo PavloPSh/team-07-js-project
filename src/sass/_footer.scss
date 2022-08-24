@@ -1,0 +1,12 @@
+.footer{
+    display: flex;
+    justify-content: center;
+    padding: 29px 0;
+}
+
+.footer__button{
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+}

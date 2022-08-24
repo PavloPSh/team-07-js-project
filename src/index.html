@@ -3,12 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
+    <title>Filmoteka</title>
+    <link rel="stylesheet" href="./sass/index.scss"/>
+    <!-- <script type="module" src="./index.js"></script> -->
   </head>
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
+    <!-- <include src="./partials/example.html"></include> -->
+    <!-- <include src="./partials/home.html"></include>
+    <include src="./partials/library.html"></include> -->
+
+
+    <header class="home__header">
+
+
+      <button type="button" class="icon-button">filmoteka</button>
+  
+
+      <form class="search-form" id="search-form">
+          <input
+            class="search-input"
+            autofocus
+            type="text"
+            name="searchData"
+            autocomplete="off"
+            placeholder="Movie search"
+            />
+            
+          <button class="search-button" type="submit">Search</button>
+      </form>
+  
+  
+      <nav>
+        <button type="button" class="nav-button" data-action="toHome">home</button>
+        <button type="button" class="nav-button" data-action="toLibrary"> my library</button>
+      </nav>
+
+
+  </header>
+
+  <main>
+    <section>
+
+    </section>
+  </main>
+
+
+
+  <footer class="footer">
+      <p class="footer__text">
+        ©  2020 | All Rights Reserved | Developed with 
+      </p>
+      <button type="button" class="footer__button">by GoIT Students</button>
+  </footer>
+
+
+  <script type="module" src="./js/headerBtns.js"></script>
+  <script type="module" src="./js/form.js"></script>
   </body>
 </html>
