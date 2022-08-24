@@ -3,7 +3,7 @@ import { onScroll, onToTopBtn } from './scroll';
 import onFormSubmit from './form';
 import Notiflix from 'notiflix';
 
-const trendingFilms = new filmsAPI();
+export const trendingFilms = new filmsAPI();
 
 const mainSection = document.querySelector('.card__list');
 
@@ -11,10 +11,10 @@ const homeBtn = document.querySelector('.header__nav-link');
 
 const IMG_URL = `https://image.tmdb.org/t/p/w500`;
 
-onScroll();
-onToTopBtn();
+// onScroll();
+// onToTopBtn();
 
-function TrendingFilms(event) {
+export function TrendingFilms(event) {
   event.preventDefault();
   document.querySelector('.search-form').firstElementChild.value = '';
   trendingFilms.currentPage = 1;
@@ -93,7 +93,7 @@ trendingFilms
     res.data.genres.forEach(genre => localStorage.setItem(genre.id, genre.name))
   );
 
-const getGenreName = function (ids) {
+export const getGenreName = function (ids) {
   let genre = [];
 
   ids.forEach(id => {
@@ -102,7 +102,7 @@ const getGenreName = function (ids) {
   return genre;
 };
 
-const renderCard = function (
+export const renderCard = function (
   id,
   poster_path,
   title,
