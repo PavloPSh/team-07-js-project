@@ -1,2 +1,0 @@
-const t=document.querySelector('button[data-action="toHome"]'),e=document.querySelector('button[data-action="toLibrary"]');document.querySelector(".icon-button").addEventListener("click",(()=>{window.location.href="/index.html"})),t.addEventListener("click",(()=>{window.location.href="/index.html"})),e.addEventListener("click",(()=>{window.location.href="/library.html"}));
-//# sourceMappingURL=index.6a565f7c.js.map
