@@ -1,7 +1,7 @@
 import filmsAPI from './apiServiсe';
-import { onScroll, onToTopBtn } from './scroll';
-import onFormSubmit from './form';
-import Notiflix from 'notiflix';
+// import { onScroll, onToTopBtn } from './scroll';
+// import onFormSubmit from './form';
+// import Notiflix from 'notiflix';
 
 export const trendingFilms = new filmsAPI();
 
