@@ -1,7 +1,6 @@
 import filmsAPI from './apiServiсe';
-// import { onScroll, onToTopBtn } from './scroll';
-// import onFormSubmit from './form';
-// import Notiflix from 'notiflix';
+import { onScroll, onToTopBtn } from './scroll';
+
 
 export const trendingFilms = new filmsAPI();
 
@@ -11,8 +10,8 @@ const homeBtn = document.querySelector('.header__nav-link');
 
 const IMG_URL = `https://image.tmdb.org/t/p/w500`;
 
-// onScroll();
-// onToTopBtn();
+onScroll();
+onToTopBtn();
 
 export function TrendingFilms(event) {
   event.preventDefault();
