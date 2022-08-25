@@ -1,2 +1,2 @@
-const popupContent = document.querySelector('.popup__body');
-console.log(popupContent);
+// const popupContent = document.querySelector('.popup__body');
+// console.log(popupContent);
