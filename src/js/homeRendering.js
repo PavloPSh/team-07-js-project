@@ -1,7 +1,6 @@
 import filmsAPI from './apiServiсe';
 import { onScroll, onToTopBtn } from './scroll';
 import { renderCard } from './renderCard';
-
 const trendingFilms = new filmsAPI();
 const mainSection = document.querySelector('.card__list');
 const homeBtn = document.querySelector('.header__nav-link');

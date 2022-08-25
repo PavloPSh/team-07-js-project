@@ -1,5 +1,4 @@
 const mainSection = document.querySelector('.card__list');
-
 export const renderCard = function (
   id,
   poster_path,
