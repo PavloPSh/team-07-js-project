@@ -1,12 +1,8 @@
-formSearch
-import Notiflix from 'notiflix';
 import { renderCard } from './renderCard';
 import filmsAPI from './apiServiсe';
-
-import './modal-footer';
-
-
 const trendingFilms = new filmsAPI();
+import Notiflix from 'notiflix';
+import './modal-footer';
 
 const searchForm = document.querySelector('#search-form');
 const mainSection = document.querySelector('.card__list');
@@ -38,7 +34,6 @@ const onFormSubmit = function (event) {
         release_date,
       } = film;
       let genre = getGenreName(genre_ids);
-      console.log('2');
       try {
         setTimeout(() => {
           renderCard(
