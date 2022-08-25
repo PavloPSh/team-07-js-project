@@ -1,5 +1,4 @@
 import filmsAPI from './apiServiсe';
-
 import { renderCard } from './renderCard';
 const trendingFilms = new filmsAPI();
 
