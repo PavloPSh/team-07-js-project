@@ -1,22 +1,12 @@
 import filmsAPI from './apiServiсe';
-import { onScroll, onToTopBtn } from './scroll';
-
 import { renderCard } from './renderCard';
 
-
-
-export const trendingFilms = new filmsAPI();
-
+const trendingFilms = new filmsAPI();
 const mainSection = document.querySelector('.card__list');
 const homeBtn = document.querySelector('.header__nav-link');
 const logoLink = document.querySelector('.header__logo');
 
-onScroll();
-onToTopBtn();
-
-
-
-export function TrendingFilms(event) {
+function TrendingFilms(event) {
 
   event.preventDefault();
   document.querySelector('#search-form').firstElementChild.value = '';
@@ -62,7 +52,6 @@ homeBtn.addEventListener('click', TrendingFilms);
 window.addEventListener('load', TrendingFilms);
 
 function LoadMorePhoto() {
-  console.log('start');
   trendingFilms.currentPage += 1;
   trendingFilms.getTrendingFilms().then(result => {
     result.data.results.forEach(film => {
@@ -124,7 +113,6 @@ const infinteObserver = new IntersectionObserver(
     if (entry.isIntersecting) {
       // перестаємо його відслідковувати
       observer.unobserve(entry.target);
-      console.log('start');
       // Завантажуємо нову порцію контенту
       LoadMorePhoto();
     }
