@@ -1,8 +1,6 @@
-formSearch
 import Notiflix from 'notiflix';
 import { renderCard } from './renderCard';
 import filmsAPI from './apiServiсe';
-
 import './modal-footer';
 
 
@@ -12,6 +10,8 @@ const searchForm = document.querySelector('#search-form');
 const mainSection = document.querySelector('.card__list');
 
 let inputData = '';
+
+
 
 const onFormSubmit = function (event) {
   event.preventDefault();

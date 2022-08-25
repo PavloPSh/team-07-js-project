@@ -17,7 +17,7 @@ onToTopBtn();
 
 
 export function TrendingFilms(event) {
-main
+
   event.preventDefault();
   document.querySelector('#search-form').firstElementChild.value = '';
   trendingFilms.currentPage = 1;
