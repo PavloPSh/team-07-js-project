@@ -37,6 +37,9 @@
   width: 100%;
   object-fit: cover;
   transition: transform var(--animation-duration) var(--timing-function);
+  display: block;
+  height: 398px;
+  border-radius: 6px;
 }
 
 .card__link {
