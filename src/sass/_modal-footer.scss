@@ -96,6 +96,23 @@
     letter-spacing: 0.07px;
   }
 }
+.modal__button{
+  
+width: 30px;
+height: 30px;
+cursor: pointer;
+background-color: rgba(0,0,0,0);
+border: none;
+transition: all .25s cubic-bezier(.4,0,.2,1);
+position: absolute;
+top: 8px;
+right: 8px;
+fill: currentColor;
+}
+.modal__button:hover,
+.modal__button:focus{
+  color:#ff6b08;
+}
 
 // !=====================
 .main {
