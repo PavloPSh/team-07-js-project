@@ -5,13 +5,10 @@ import './modal-footer';
 
 
 const trendingFilms = new filmsAPI();
-
 const searchForm = document.querySelector('#search-form');
 const mainSection = document.querySelector('.card__list');
 
 let inputData = '';
-
-
 
 const onFormSubmit = function (event) {
   event.preventDefault();
