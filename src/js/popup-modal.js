@@ -1,22 +1,27 @@
-const refs = {
-    openPopupModalBtn: document.querySelector(".card__item"),
-    сlosePopupModalBtn: document.querySelector("[data-popup-modal-close]"),
-    popupModal: document.querySelector("[data-popup-modal]"),
-  };
-  
-console.log(refs.openPopupModalBtn);
+import { renderCard } from '../js/renderCard';
 
-  refs.openPopupModalBtn.addEventListener("click", onOpenPopup);
-  refs.closePopupModalBtn.addEventListener("click", onClosePopup);
-  refs.popupModal.addEventListener("click", popupModalClick)
+const itemEl = document.querySelector('.card__item');
+itemEl.setAttribute('data-popup-modal-open', '');
+
+const refs = {
+    openPopupModalBtn: document.querySelector('[data-popup-modal-open]'),
+    сlosePopupModalBtn: document.querySelector('[data-popup-modal-close]'),
+    popupModal: document.querySelector('[data-popup-modal]'),
+  };
+
+  console.log(refs.openPopupModalBtn);
+
+  refs.openPopupModalBtn.addEventListener('click', onOpenPopup);
+  refs.closePopupModalBtn.addEventListener('click', onClosePopup);
+  refs.popupModal.addEventListener('click', popupModalClick)
   
   function onOpenPopup() {
-  refs.popupModal.classList.remove("is-hidden");
+  refs.popupModal.classList.remove('is-hidden');
   window.addEventListener('keydown', onPressESC);
   }
   
   function onClosePopup() {
-  refs.popupModal.classList.add("is-hidden");
+  refs.popupModal.classList.add('is-hidden');
   window.removeEventListener('keydown', onPressESC);
   }
   
