@@ -1,7 +1,14 @@
 import filmsAPI from './apiServiсe';
 import { onScroll, onToTopBtn } from './scroll';
+ formSearch
 import { renderCard } from './renderCard';
 const trendingFilms = new filmsAPI();
+=======
+
+
+export const trendingFilms = new filmsAPI();
+
+main
 const mainSection = document.querySelector('.card__list');
 const homeBtn = document.querySelector('.header__nav-link');
 const logoLink = document.querySelector('.header__logo');
@@ -9,7 +16,14 @@ const logoLink = document.querySelector('.header__logo');
 onScroll();
 onToTopBtn();
 
+formSearch
 function TrendingFilms(event) {
+=======
+onScroll();
+onToTopBtn();
+
+export function TrendingFilms(event) {
+main
   event.preventDefault();
   document.querySelector('#search-form').firstElementChild.value = '';
   trendingFilms.currentPage = 1;

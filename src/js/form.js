@@ -1,7 +1,15 @@
+formSearch
 import Notiflix from 'notiflix';
 import { renderCard } from './renderCard';
 import filmsAPI from './apiServiсe';
 const trendingFilms = new filmsAPI();
+=======
+import Notiflix from "notiflix";
+import './modal-footer';
+
+
+
+main
 const searchForm = document.querySelector('#search-form');
 const mainSection = document.querySelector('.card__list');
 
