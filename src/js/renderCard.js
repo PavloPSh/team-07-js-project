@@ -17,6 +17,8 @@ export const renderCard = function (
   }
   const movieEl = document.createElement('li');
   movieEl.classList.add('card__item');
+  
+
 
   movieEl.innerHTML = `<a class="card__link" id = "${id}" href="#">
         <img src="${poster_url}" alt ="${title ?? name}" class="card__poster">
