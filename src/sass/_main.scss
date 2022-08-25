@@ -21,20 +21,8 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  .card__item {
-    flex-basis: calc(50% - 15px);
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .card__item {
-    flex-basis: calc(100% / 3 - 15px);
-  }
-}
-
 .card__poster {
-  width: 100%;
+  height: 398px;
   object-fit: cover;
   transition: transform var(--animation-duration) var(--timing-function);
   display: block;
@@ -109,4 +97,42 @@
   font-size: 12px;
   line-height: 1.33;
   color: #ff6b08;
+}
+
+// ************************** MOB *******************
+
+@media screen and (max-width: 767px) {
+  .card__item {
+    width: 280px;
+  }
+
+  .card__poster {
+    width: 280px;
+  }
+}
+
+// ************************ TAB ***************************
+
+@media screen and (min-width: 768px) {
+  .card__item {
+    width: 294px;
+    flex-basis: calc(50% - 15px);
+  }
+
+  .card__poster {
+    width: 294px;
+  }
+}
+
+// *********************** DESK ********************
+
+@media screen and (min-width: 1024px) {
+  .card__item {
+    width: 274px;
+    flex-basis: calc(100% / 3 - 15px);
+  }
+
+  .card__poster {
+    width: 274px;
+  }
 }
