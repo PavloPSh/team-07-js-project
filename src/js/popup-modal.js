@@ -1,4 +1,5 @@
 import filmsAPI from './apiServiсe';
+import { renderMovieModal } from './renderPopupCard';
 const trendingFilms = new filmsAPI();
 const filmCard = document.querySelector('.card__list');
 filmCard.addEventListener('click', onFilmCardClick);
@@ -23,9 +24,11 @@ function onFilmCardClick(e) {
       poster_path,
       id,
       vote_average,
+      vote_count,
+      popularity,
+      overview,
       genre_ids,
-      first_air_date,
-      release_date,
+      genre,
     } = film;
 
     try {
@@ -36,74 +39,37 @@ function onFilmCardClick(e) {
           poster_path,
           id,
           vote_average,
+          vote_count,
+          popularity,
+          overview,
           genre_ids,
-          first_air_date,
-          release_date
+          genre,
         );
       }, 100);
-    } catch (error) {
+    } 
+    catch (error) {
       console.log('error');
     }
   });
 }
 
-function renderMovieModal(
-  title,
-  name,
-  poster_path,
-  id,
-  vote_average,
-  genre_ids,
-  first_air_date,
-  release_date
-) {
-  console.log(
-    title,
-    name,
-    poster_path,
-    id,
-    vote_average,
-    genre_ids,
-    first_air_date,
-    release_date
-  );
+const modalRef = document.querySelector('.modal');
+modalRef.addEventListener('click', onModalClose);
+
+function onModalClose(e) {
+  if (e.target.classList.contains('popup')) {
+    modalRef.classList.remove('popup')
+    modalRef.innerHTML = ''
+  }
 }
 
-// import { renderCard } from '../js/renderCard';
 
-// const itemEl = document.querySelector('.card__item');
-// itemEl.setAttribute('data-popup-modal-open', '');
 
-// const refs = {
-//     openPopupModalBtn: document.querySelector('[data-popup-modal-open]'),
-//     сlosePopupModalBtn: document.querySelector('[data-popup-modal-close]'),
-//     popupModal: document.querySelector('[data-popup-modal]'),
-//   };
+// buttonClose.addEventListener('click', onButtonClose);
 
-//   console.log(refs.openPopupModalBtn);
-
-//   refs.openPopupModalBtn.addEventListener('click', onOpenPopup);
-//   refs.closePopupModalBtn.addEventListener('click', onClosePopup);
-//   refs.popupModal.addEventListener('click', popupModalClick)
-
-//   function onOpenPopup() {
-//   refs.popupModal.classList.remove('is-hidden');
-//   window.addEventListener('keydown', onPressESC);
+// function onButtonClose(e) {
+//   if (e.target.classList.contains('popup-button')) {
+//     buttonClose.classList.remove('popup-button')
+//     buttonClose.innerHTML = ''
 //   }
-
-//   function onClosePopup() {
-//   refs.popupModal.classList.add('is-hidden');
-//   window.removeEventListener('keydown', onPressESC);
-//   }
-
-//   function popupModalClick(event) {
-//   if (event.target.classList.contains('popup__body--close')) {
-//   onClosePopup();
-//   }
-//   }
-
-//   function onPressESC(event) {
-//   if (event.keyCode === 27) {
-//       onClosePopup();
-//   }
-//   }
+// }

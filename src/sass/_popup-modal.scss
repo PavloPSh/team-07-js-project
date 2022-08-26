@@ -1,3 +1,8 @@
+.modal {
+    width: 0;
+    height: 0;
+}
+
 .popup {
     position: fixed;
     top: 0;
@@ -34,7 +39,7 @@
           }
     }
     
-    .popup-button {
+    .popup-button__close {
     position: absolute;
     right: 36px;
     top: 36px;
@@ -63,15 +68,14 @@
           }
     }
     
-    .popup--leftpart {
+    .popup__img {
         height: 357px;
-        border: 2px solid blue;
+        border-radius: 5px; 
         margin-bottom: 20px;
     
         @media screen and (min-width: 768px) {
             margin-right: 68px;
             width: 264px;
-            height: 100%;
           }
     
           @media screen and (min-width: 1280px) {
@@ -158,6 +162,7 @@
     .popup__button {
         display: flex;
         justify-content: space-between;
+        cursor: pointer;
         
         @media screen and (min-width: 768px) {
             justify-content: flex-start;
