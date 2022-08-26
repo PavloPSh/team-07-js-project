@@ -3,27 +3,29 @@ import { renderCard } from './renderCard';
 import filmsAPI from './apiServiсe';
 import './modal-footer';
 
-
 const trendingFilms = new filmsAPI();
 
 const searchForm = document.querySelector('#search-form');
 const mainSection = document.querySelector('.card__list');
+const loader = document.querySelector('.loader__wrapper');
 
 let inputData = '';
-
-
 
 const onFormSubmit = function (event) {
   event.preventDefault();
   trendingFilms.currentPage = 1;
   mainSection.innerHTML = '';
+
   inputData = event.currentTarget.elements.searchData.value;
   if (inputData === '') {
     return Notiflix.Notify.warning('try to find something');
   }
   trendingFilms.getMovieSearch(inputData).then(result => {
+    loader.classList.remove('hidden');
+
     if (result.data.total_results === 0) {
       noFilmFound();
+      loader.classList.add('hidden');
       return;
     }
     result.data.results.forEach(film => {
@@ -51,6 +53,8 @@ const onFormSubmit = function (event) {
             release_date,
             vote_average
           );
+
+          loader.classList.add('hidden');
         }, 150);
         setTimeout(() => {
           infinteScroll();
