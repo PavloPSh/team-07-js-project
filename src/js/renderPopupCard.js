@@ -2,6 +2,7 @@ import filmsAPI from './apiServiсe';
 const trendingFilms = new filmsAPI();
 const filmCard = document.querySelector('.card__list');
 
+const popupCards = document.querySelector('.modal');
 
 export const renderMovieModal = function (
     title,
@@ -23,14 +24,13 @@ export const renderMovieModal = function (
     } else {
       poster_url = `https://www.themoviedb.org/t/p/w500${poster_path}`;
     }
-    const popupCards = document.querySelector('.modal');
     popupCards.classList.add('popup');
     // popupCards.classList.remove('modal');
 
-    popupCards.innerHTML = ` <div class="popup__body popup__body--close">
+    popupCards.innerHTML = ` <div class="popup__body">
     <button type="button" class="popup-button" data-popup-modal-close>
-        <svg class="popup-button__close" width="14" height="14">
-        <use href='./images/icon-cross.svg#icon-cross'></use>
+        <svg class="popup-button__close" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
         </svg>
         </button>
     <div class="popup__content">
