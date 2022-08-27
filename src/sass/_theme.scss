@@ -1,0 +1,23 @@
+body {
+  background: #fff;
+}
+.theme {
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(39, 38, 40, 0.4);
+}
+
+.theme {
+  position: fixed;
+  cursor: pointer;
+  z-index: 1000;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(39, 38, 40, 0.4);
+}
+.dark {
+  background: rgb(12, 11, 11);
+}
