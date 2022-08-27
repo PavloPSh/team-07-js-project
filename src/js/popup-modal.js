@@ -155,7 +155,7 @@ function onFilmCardClick(e) {
 
 
 const modalRef = document.querySelector('.modal');
-modalRef.addEventListener('click', onModalClose);
+modalRef?.addEventListener('click', onModalClose);
 document.addEventListener('keydown', onModalClose);
 
 function onModalClose(e) {

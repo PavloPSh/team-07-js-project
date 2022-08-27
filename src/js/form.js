@@ -65,7 +65,7 @@ const onFormSubmit = function (event) {
   });
 };
 
-searchForm.addEventListener('submit', onFormSubmit);
+searchForm?.addEventListener('submit', onFormSubmit);
 
 function LoadMorePhoto() {
   trendingFilms.currentPage += 1;
