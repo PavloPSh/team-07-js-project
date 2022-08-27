@@ -2,6 +2,7 @@ import filmsAPI from './apiServiсe';
 const trendingFilms = new filmsAPI();
 const filmCard = document.querySelector('.card__list');
 
+
 export const renderMovieModal = function (
     title,
     name,
@@ -13,6 +14,8 @@ export const renderMovieModal = function (
     overview,
     genre_ids,
     genre,
+  watchBtnLabel,
+    queueBtnLabel
   ) {
     let poster_url;
     if (!poster_path) {
@@ -45,8 +48,8 @@ export const renderMovieModal = function (
             <h1 class="popup__about">About</h1>
             <p class="popup__overview">${overview}</p>
             <div class="popup__button">
-            <button class="watched-button" type="submit">Add to watched</button>
-            <button class="queque-button" type="submit">Add to queque</button>
+              <button data-id=${id} class="watched-button" type="submit">${watchBtnLabel}</button>
+              <button data-id=${id} class="queque-button" type="submit">${queueBtnLabel}</button>
             </div>    
         </div>
     </div>
