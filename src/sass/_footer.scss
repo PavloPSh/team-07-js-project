@@ -11,15 +11,8 @@
     font-size: 19px;
  font-weight: bold;
    color: #fafaff; 
-}
-.footer {
-  padding-top: 30px;
-  padding-bottom: 28px;
   color: #545454;
-  justify-content: center;
-  text-align: center;
-  // align-items: center;
-
+  
   @media screen and (max-width: 767px) {
     margin: 0 auto;
     font-size: 14px;
@@ -37,6 +30,9 @@
     background-color: transparent;
     border: none;
     text-decoration: underline;
+    color: #545454;
+    border: none;
+    cursor: pointer;
     
 }
 
