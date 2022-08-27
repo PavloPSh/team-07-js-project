@@ -2,20 +2,50 @@
     display: flex;
     justify-content: center;
     padding: 30px 0;
+    background-color: white;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    text-align: center; 
+    width: 99%;   
+    font-size: 19px;
+ font-weight: bold;
+   color: #fafaff; 
+  color: #545454;
+  
+  @media screen and (max-width: 767px) {
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 1.18;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    font-size: 16px;
+    line-height: 1.14;
+  }
 }
 
 .footer__button{
     background-color: transparent;
     border: none;
     text-decoration: underline;
+    color: #545454;
+    border: none;
+    cursor: pointer;
     
 }
 
 .footer__text{
+  
     font-weight: 400;
     font-size: 16px;
     line-height: 1.18;
     color: #545454;
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+}
 }
 .heart {
     animation: heartbeat 1s infinite;
@@ -59,3 +89,4 @@
       transform: scale(1.2) rotate(-45deg);
     }
   }
+ 
