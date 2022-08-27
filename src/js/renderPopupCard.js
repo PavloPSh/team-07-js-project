@@ -1,7 +1,6 @@
 import filmsAPI from './apiServiсe';
 const trendingFilms = new filmsAPI();
-const filmCard = document.querySelector('.card__list');
-
+const filmCard = document.querySelector('.section');
 const popupCards = document.querySelector('.modal');
 
 export const renderMovieModal = function (
@@ -25,7 +24,6 @@ export const renderMovieModal = function (
       poster_url = `https://www.themoviedb.org/t/p/w500${poster_path}`;
     }
     popupCards.classList.add('popup');
-    // popupCards.classList.remove('modal');
 
     popupCards.innerHTML = ` <div class="popup__body">
     <button type="button" class="popup-button" data-popup-modal-close>
@@ -45,7 +43,7 @@ export const renderMovieModal = function (
               <li class="popup__item">Original Title <span class="popup__span popup__span__title">${title ?? name}</span></li>
               <li class="popup__item">Genre <span class="popup__span popup__span__name">${genre}</span></li>
             </ul>
-            <h1 class="popup__about">About</h1>
+            <h1 lang="en" class="popup__about">About</h1>
             <p class="popup__overview">${overview}</p>
             <div class="popup__button">
               <button data-id=${id} class="watched-button" type="submit">${watchBtnLabel}</button>
