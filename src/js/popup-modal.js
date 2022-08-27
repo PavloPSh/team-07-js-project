@@ -1,7 +1,7 @@
 import filmsAPI from './apiServiсe';
 import { renderMovieModal } from './renderPopupCard';
 const trendingFilms = new filmsAPI();
-const filmCard = document.querySelector('.card__list');
+const filmCard = document.querySelector('.section');
 filmCard.addEventListener('click', onFilmCardClick);
 
 const STORAGE_WATCHED = "Watched:";
@@ -129,7 +129,6 @@ function onFilmCardClick(e) {
       genre_ids,
       genre,
     } = film;
-
     try {
       setTimeout(() => {
         renderMovieModal(
@@ -154,23 +153,15 @@ function onFilmCardClick(e) {
   });
 }
 
+
 const modalRef = document.querySelector('.modal');
-modalRef.addEventListener('click', onModalClose);
+modalRef?.addEventListener('click', onModalClose);
+document.addEventListener('keydown', onModalClose);
 
 function onModalClose(e) {
-  if (e.target.classList.contains('popup')) {
+  if (e.target.classList.contains('popup') || e.keyCode === 27 || e.target.classList.contains('popup-button__close')) {
     modalRef.classList.remove('popup')
     modalRef.innerHTML = ''
   }
 }
 
-
-
-// buttonClose.addEventListener('click', onButtonClose);
-
-// function onButtonClose(e) {
-//   if (e.target.classList.contains('popup-button')) {
-//     buttonClose.classList.remove('popup-button')
-//     buttonClose.innerHTML = ''
-//   }
-// }

@@ -1,5 +1,6 @@
 import filmsAPI from './apiServiсe';
 import { renderCard } from './renderCard';
+import { getGenreName } from './getGenreName';
 
 const trendingFilms = new filmsAPI();
 const mainSection = document.querySelector('.card__list');
@@ -7,7 +8,6 @@ const homeBtn = document.querySelector('.header__nav-link');
 const logoLink = document.querySelector('.header__logo');
 
 function TrendingFilms(event) {
-
   event.preventDefault();
   document.querySelector('#search-form').firstElementChild.value = '';
   trendingFilms.currentPage = 1;
@@ -38,6 +38,7 @@ function TrendingFilms(event) {
             vote_average
           );
         }, 100);
+
         setTimeout(() => {
           infinteScroll();
         }, 500);
@@ -78,7 +79,7 @@ function LoadMorePhoto() {
             release_date,
             vote_average
           );
-        }, 100);
+        }, 500);
         setTimeout(() => {
           infinteScroll();
         }, 500);
@@ -91,21 +92,6 @@ function LoadMorePhoto() {
     infinteScroll();
   }, 500);
 }
-
-trendingFilms
-  .getGenres()
-  .then(res =>
-    res.data.genres.forEach(genre => localStorage.setItem(genre.id, genre.name))
-  );
-
-const getGenreName = function (ids) {
-  let genre = [];
-
-  ids.forEach(id => {
-    genre.push(localStorage.getItem(id));
-  });
-  return genre;
-};
 
 const infinteObserver = new IntersectionObserver(
   ([entry], observer) => {

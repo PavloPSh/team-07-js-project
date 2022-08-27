@@ -1,7 +1,7 @@
 const toTopBtn = document.querySelector('.btn-to-top');
 
 window.addEventListener('scroll', onScroll);
-toTopBtn.addEventListener('click', onToTopBtn);
+toTopBtn?.addEventListener('click', onToTopBtn);
 
 function onScroll() {
   const scrolled = window.pageYOffset;
