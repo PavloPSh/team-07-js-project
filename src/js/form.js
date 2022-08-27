@@ -2,6 +2,7 @@ import Notiflix from 'notiflix';
 import { renderCard } from './renderCard';
 import filmsAPI from './apiServiсe';
 import './modal-footer';
+import { getGenreName } from './getGenreName';
 
 const trendingFilms = new filmsAPI();
 const searchForm = document.querySelector('#search-form');
@@ -39,7 +40,6 @@ const onFormSubmit = function (event) {
         release_date,
       } = film;
       let genre = getGenreName(genre_ids);
-      console.log('2');
       try {
         setTimeout(() => {
           renderCard(
@@ -68,7 +68,6 @@ const onFormSubmit = function (event) {
 searchForm.addEventListener('submit', onFormSubmit);
 
 function LoadMorePhoto() {
-  console.log('start');
   trendingFilms.currentPage += 1;
   trendingFilms.getMovieSearch(inputData).then(result => {
     if (result.data.total_pages === 1) {
@@ -109,20 +108,6 @@ function LoadMorePhoto() {
     });
   });
 }
-trendingFilms
-  .getGenres()
-  .then(res =>
-    res.data.genres.forEach(genre => localStorage.setItem(genre.id, genre.name))
-  );
-
-const getGenreName = function (ids) {
-  let genre = [];
-
-  ids.forEach(id => {
-    genre.push(localStorage.getItem(id));
-  });
-  return genre;
-};
 
 const infinteObserver = new IntersectionObserver(
   ([entry], observer) => {
