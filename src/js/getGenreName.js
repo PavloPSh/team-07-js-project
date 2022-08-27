@@ -1,15 +1,18 @@
 import filmsAPI from './apiServiсe';
 const ganreName = new filmsAPI();
 
-ganreName.getGenres().then(res =>
-  res.data.genres.forEach(genre => {
-    try {
+async function FetchGenreName() {
+  const result = await ganreName.getGenres();
+  try {
+    result.data.genres.forEach(genre => {
       localStorage.setItem(genre.id, genre.name);
-    } catch (error) {
-      console.log('error');
-    }
-  })
-);
+    });
+  } catch (error) {
+    console.log('error');
+  }
+}
+
+FetchGenreName();
 
 export const getGenreName = function (ids) {
   let genre = [];
