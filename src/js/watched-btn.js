@@ -1,20 +1,13 @@
 import { renderCard } from './renderCard';
 import { renderMovieModal } from './renderPopupCard'
-console.log("Hello")
 
 const watchedBtn = document.querySelector('button[data-action="watched"]');
 const queueBtn = document.querySelector('button[data-action="queue"]');
 const mainSection = document.querySelector('.card__list');
 const watched = JSON.parse(localStorage.getItem('Watched:'));
-console.log(watched);
+// console.log(watched);
 
-try {
-    watchedBtn.addEventListener("click", onWatchBtnClick);
-} catch (error) {
-    // console.log(error)
-}
-
-// watchedBtn.addEventListener("click", onWatchBtnClick);
+watchedBtn?.addEventListener("click", onWatchBtnClick);
 
 function onWatchBtnClick() {
   const watchedL = watched.map(film => {
