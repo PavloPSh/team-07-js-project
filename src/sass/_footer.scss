@@ -12,30 +12,44 @@
  font-weight: bold;
    color: #fafaff; 
 }
+.footer {
+  padding-top: 30px;
+  padding-bottom: 28px;
+  color: #545454;
+  justify-content: center;
+  text-align: center;
+  // align-items: center;
+
+  @media screen and (max-width: 767px) {
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 1.18;
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    font-size: 16px;
+    line-height: 1.14;
+  }
+}
 
 .footer__button{
-  color: #545454;
-  border: none;
-  cursor: pointer;
-  background-color: transparent;
-  text-decoration-line: underline;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    
+}
 
-  &:hover,
-  &:focus {
-    color: #ff6b08;
-  } 
-}
-.click {
-  @media screen and (max-width: 1023px) {
-    display: none;
-  }
-  text-align: left;
-}
 .footer__text{
+  
     font-weight: 400;
     font-size: 16px;
     line-height: 1.18;
     color: #545454;
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+}
 }
 .heart {
     animation: heartbeat 1s infinite;
