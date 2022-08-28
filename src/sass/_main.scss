@@ -73,7 +73,7 @@
 
 .card__title {
   text-transform: uppercase;
-
+  color: #000000;
   margin-top: 10px;
   font-size: 12px;
   font-weight: 500;
@@ -125,5 +125,15 @@
 
   .card__poster {
     height: 574px;
+  }
+
+  .card__title {
+    margin-top: 12px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .card__genre {
+    font-size: 20px;
   }
 }
