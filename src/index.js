@@ -7,4 +7,3 @@ import './js/modal-footer.js';
 import './js/popup-modal';
 import './js/theme';
 
-
