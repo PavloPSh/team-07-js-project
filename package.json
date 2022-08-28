@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "https://PavloPSh.github.io/team-07-js-project",
   "scripts": {
-    "start": "parcel src/*.html --port 2223",
+    "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /team-07-js-project/ --no-scope-hoist"
   },
   "repository": {
