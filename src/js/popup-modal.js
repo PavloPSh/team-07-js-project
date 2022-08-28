@@ -5,9 +5,8 @@ const filmCard = document.querySelector('.section');
 filmCard.addEventListener('click', onFilmCardClick);
 
 // const storage refs
-const STORAGE_WATCHED = "Watched:";
-const STORAGE_QUEUE = "Queque:";
-  
+const STORAGE_WATCHED = 'Watched:';
+const STORAGE_QUEUE = 'Queque:';
 
 async function fetchFilmData(filmID) {
   const response = await trendingFilms.getFilmID(filmID);
@@ -23,70 +22,70 @@ function onFilmCardClick(e) {
   }
 
   fetchFilmData(e.target.closest('.card__link').id).then(film => {
-  
     // pop up fetched movie id
-  let parentId = (e.target.closest('.card__link').id);
- 
-  //this refs should be there to get active parsed arrays
-  const watchedFilmsArray = JSON.parse(localStorage.getItem(STORAGE_WATCHED)) || [];
-  const queueFilmsArray = JSON.parse(localStorage.getItem(STORAGE_QUEUE)) || [];
+    let parentId = e.target.closest('.card__link').id;
+
+    //this refs should be there to get active parsed arrays
+    const watchedFilmsArray =
+      JSON.parse(localStorage.getItem(STORAGE_WATCHED)) || [];
+    const queueFilmsArray =
+      JSON.parse(localStorage.getItem(STORAGE_QUEUE)) || [];
 
     // refs for building labels in first popup buttons loading
-  let isInWatchedBefore
-  let isInQueueBefore;
+    let isInWatchedBefore;
+    let isInQueueBefore;
 
     // find if movie is in isInWatchedBefore
-  watchedFilmsArray.find(value => {
-    if (value.id == parentId) {
-          return isInWatchedBefore = true;
-        }
-    else {
-          return isInWatchedBefore = false;
-        }
-  });
-    
+    watchedFilmsArray.find(value => {
+      if (value.id == parentId) {
+        return (isInWatchedBefore = true);
+      } else {
+        return (isInWatchedBefore = false);
+      }
+    });
+
     // find if movie is in isInWatchedBefore
     queueFilmsArray.find(value => {
       if (value.id == parentId) {
-          return isInQueueBefore = true;
-      }
-      else {
-          return isInQueueBefore = false;
+        return (isInQueueBefore = true);
+      } else {
+        return (isInQueueBefore = false);
       }
     });
-    
+
     // popup first loading buttons labels
-  let watchBtnLabel = "";
-  let queueBtnLabel = "";
-    
+    let watchBtnLabel = '';
+    let queueBtnLabel = '';
+
     //build add or delete to watch label
     if (isInWatchedBefore) {
-      watchBtnLabel = "Remove from watched";
+      watchBtnLabel = 'Remove from watched';
     } else {
-      watchBtnLabel = "Add to watched";
+      watchBtnLabel = 'Add to watched';
     }
-    
+
     //build add or delete to queue label
     if (isInQueueBefore) {
-      queueBtnLabel = "Remove from queue";
+      queueBtnLabel = 'Remove from queue';
     } else {
-      queueBtnLabel = "Add to queue";
+      queueBtnLabel = 'Add to queue';
     }
 
     // BUTTONS MAIN LOGIC !!!
-    document.addEventListener('click', (e) => {
-
+    document.addEventListener('click', e => {
       // logic for button "add to watch"
-      if (e.target.classList.contains('watched-button') && e.target.getAttribute('data-id') === parentId) {
+      if (
+        e.target.classList.contains('watched-button') &&
+        e.target.getAttribute('data-id') === parentId
+      ) {
         let isInWatched;
-        
+
         //find if there is popup movie in watchedFilmsArray
         watchedFilmsArray.find(value => {
           if (value.id == parentId) {
-              return isInWatched = true;
-          }
-          else {
-              return isInWatched = false;
+            return (isInWatched = true);
+          } else {
+            return (isInWatched = false);
           }
         });
 
@@ -96,35 +95,43 @@ function onFilmCardClick(e) {
             return movie.id == parentId;
           });
           watchedFilmsArray.splice(indexWatchMovieRemove, 1);
-          localStorage.setItem(STORAGE_WATCHED, JSON.stringify(watchedFilmsArray));
+          localStorage.setItem(
+            STORAGE_WATCHED,
+            JSON.stringify(watchedFilmsArray)
+          );
           isInWatched = false;
-          e.target.innerText = "Add to watched";
+          e.target.innerText = 'Add to watched';
           console.log('removed from watched ');
-          return
+          return;
         }
 
         // logic to add movie if this movie is not in watchedFilmsArray
         else {
           watchedFilmsArray.push(film);
-          localStorage.setItem(STORAGE_WATCHED, JSON.stringify(watchedFilmsArray));
+          localStorage.setItem(
+            STORAGE_WATCHED,
+            JSON.stringify(watchedFilmsArray)
+          );
           isInWatched = true;
-          e.target.innerText = "Remove to watched";
-          console.log("add to watched ");
-          return
-          }
+          e.target.innerText = 'Remove to watched';
+          console.log('add to watched ');
+          return;
+        }
       }
 
       // logic for button "add to queue"
-      if (e.target.classList.contains('queque-button') && e.target.getAttribute('data-id') === parentId) {
-         let isInQueue;
-        
+      if (
+        e.target.classList.contains('queque-button') &&
+        e.target.getAttribute('data-id') === parentId
+      ) {
+        let isInQueue;
+
         //find if there is popup movie in queueFilmsArray
         queueFilmsArray.find(value => {
           if (value.id == parentId) {
-              return isInQueue = true;
-          }
-          else {
-              return isInQueue = false;
+            return (isInQueue = true);
+          } else {
+            return (isInQueue = false);
           }
         });
 
@@ -136,23 +143,23 @@ function onFilmCardClick(e) {
           queueFilmsArray.splice(indexQueueMovieRemove, 1);
           localStorage.setItem(STORAGE_QUEUE, JSON.stringify(queueFilmsArray));
           isInQueue = false;
-          e.target.innerText = "Add to queue";
+          e.target.innerText = 'Add to queue';
           console.log('removed from queue');
-          return
+          return;
         }
         // logic to add movie if this movie is not in queueFilmsArray
         else {
           queueFilmsArray.push(film);
           localStorage.setItem(STORAGE_QUEUE, JSON.stringify(queueFilmsArray));
           isInQueue = true;
-          e.target.innerText = "Remove from queue";
-          console.log("add to queue ");
-          return
-          }
+          e.target.innerText = 'Remove from queue';
+          console.log('add to queue ');
+          return;
         }
+      }
     });
 
-// popup render
+    // popup render
     const {
       title,
       name,
@@ -162,9 +169,14 @@ function onFilmCardClick(e) {
       vote_count,
       popularity,
       overview,
-      genre_ids,
-      genre,
+      genres,
     } = film;
+    const genress = [];
+    for (const genre of genres) {
+      genress.push(genre.name);
+    }
+    let gen = genress[0] + ', ' + genress[1] + ', Інші';
+
     try {
       setTimeout(() => {
         renderMovieModal(
@@ -176,28 +188,28 @@ function onFilmCardClick(e) {
           vote_count,
           popularity,
           overview,
-          genre_ids,
-          genre,
+          gen,
           watchBtnLabel,
           queueBtnLabel
         );
       }, 100);
-    } 
-    catch (error) {
+    } catch (error) {
       console.log('error');
     }
   });
 }
-
 
 const modalRef = document.querySelector('.modal');
 modalRef?.addEventListener('click', onModalClose);
 document.addEventListener('keydown', onModalClose);
 
 function onModalClose(e) {
-  if (e.target.classList.contains('popup') || e.keyCode === 27 || e.target.classList.contains('popup-button__close')) {
-    modalRef.classList.remove('popup')
-    modalRef.innerHTML = ''
+  if (
+    e.target.classList.contains('popup') ||
+    e.keyCode === 27 ||
+    e.target.classList.contains('popup-button__close')
+  ) {
+    modalRef.classList.remove('popup');
+    modalRef.innerHTML = '';
   }
 }
-
