@@ -171,12 +171,8 @@ function onFilmCardClick(e) {
       overview,
       genres,
     } = film;
-    const genress = [];
-    for (const genre of genres) {
-      genress.push(genre.name);
-    }
-    let gen = genress[0] + ', ' + genress[1] + ', Інші';
-
+    const genre = [];
+    genres.forEach(res => genre.push(res.name));
     try {
       setTimeout(() => {
         renderMovieModal(
@@ -188,7 +184,7 @@ function onFilmCardClick(e) {
           vote_count,
           popularity,
           overview,
-          gen,
+          genre,
           watchBtnLabel,
           queueBtnLabel
         );
