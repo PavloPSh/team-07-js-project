@@ -7,12 +7,13 @@ const mainSection = document.querySelector('.card__list');
 const homeBtn = document.querySelector('.header__nav-link');
 const logoLink = document.querySelector('.header__logo');
 
-function TrendingFilms(event) {
+async function TrendingFilms(event) {
   event.preventDefault();
   document.querySelector('#search-form').firstElementChild.value = '';
   trendingFilms.currentPage = 1;
   mainSection.innerHTML = '';
-  trendingFilms.getTrendingFilms().then(result => {
+  try {
+    const result = await trendingFilms.getTrendingFilms();
     result.data.results.forEach(film => {
       const {
         title,
@@ -25,36 +26,30 @@ function TrendingFilms(event) {
         release_date,
       } = film;
       let genre = getGenreName(genre_ids);
-      try {
-        setTimeout(() => {
-          renderCard(
-            id,
-            poster_path,
-            title,
-            name,
-            genre,
-            first_air_date,
-            release_date,
-            vote_average
-          );
-        }, 100);
-
-        setTimeout(() => {
-          infinteScroll();
-        }, 500);
-      } catch (error) {
-        console.log('error');
-      }
+      renderCard(
+        id,
+        poster_path,
+        title,
+        name,
+        genre,
+        first_air_date,
+        release_date,
+        vote_average
+      );
     });
-  });
+  } catch (error) {
+    console.log('error');
+  }
+  infinteScroll();
 }
 logoLink.addEventListener('click', TrendingFilms);
 homeBtn.addEventListener('click', TrendingFilms);
 window.addEventListener('load', TrendingFilms);
 
-function LoadMorePhoto() {
+async function LoadMorePhoto() {
   trendingFilms.currentPage += 1;
-  trendingFilms.getTrendingFilms().then(result => {
+  try {
+    const result = await trendingFilms.getTrendingFilms();
     result.data.results.forEach(film => {
       const {
         title,
@@ -67,30 +62,21 @@ function LoadMorePhoto() {
         release_date,
       } = film;
       let genre = getGenreName(genre_ids);
-      try {
-        setTimeout(() => {
-          renderCard(
-            id,
-            poster_path,
-            title,
-            name,
-            genre,
-            first_air_date,
-            release_date,
-            vote_average
-          );
-        }, 500);
-        setTimeout(() => {
-          infinteScroll();
-        }, 500);
-      } catch (error) {
-        console.log('error');
-      }
+      renderCard(
+        id,
+        poster_path,
+        title,
+        name,
+        genre,
+        first_air_date,
+        release_date,
+        vote_average
+      );
     });
-  });
-  setTimeout(() => {
-    infinteScroll();
-  }, 500);
+  } catch (error) {
+    console.log('error');
+  }
+  infinteScroll();
 }
 
 const infinteObserver = new IntersectionObserver(
