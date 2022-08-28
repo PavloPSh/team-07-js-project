@@ -1,25 +1,105 @@
-.home__header{
-    display: flex;
-    justify-content: space-around;
+.home__header {
     padding-top: 40px;
     padding-bottom: 80px;
-}
+    width: 100%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.56);
+    background-color: rgba(0, 0, 0, 0.56);
+    background-image: url(/src/images/home-desk-back.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
 
+.header__nav-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
 
+.header__nav-link-box {
+    display: flex;
+    }
 
-.header__logo{
+.header__nav-item:not(:last-child) {
+        margin-right: 39px;
+    }
+
+.header__logo {
     font-weight: 500;
     font-size: 30px;
     line-height: 1.16;
-}
+    color: #fff;
+    }
 
-.header__nav-link{
+.header__nav-link {
     font-weight: 500;
     font-size: 12px;
     line-height: 1.16;
-    text-transform: uppercase;
-    
-}
-.header__nav-link:not(:last-child){
-    margin-right: 39px;
-}
+    text-transform: uppercase; 
+    color: #fff; 
+    position: relative; 
+    }
+
+.current::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: #FF001B;
+    left: 0;
+    bottom: -3px;
+    }
+
+.header__search-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 41px;
+    position: relative;
+    }
+
+.search-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    width: 280px;
+    border-bottom: 1px solid #9e9e9e;
+    -webkit-appearance: none;
+    &:focus{
+        border-bottom: 1px solid #FF6B01;
+        }
+    }
+
+.search-input::placeholder {
+    color: #fff;
+    font-weight: normal;
+    font-size: 14px;
+    }
+
+.icon-film {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    }
+
+.search-button{
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    bottom: 5%;
+    left: 66%;
+    cursor: pointer;
+    }
+
+.icon-search{
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    bottom: 15%;
+    right: 15%;
+    }
