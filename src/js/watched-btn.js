@@ -1,64 +1,44 @@
+import Notiflix from 'notiflix';
 import { renderCard } from './renderCard';
-import { renderMovieModal } from './renderPopupCard'
 
 const watchedBtn = document.querySelector('button[data-action="watched"]');
 const queueBtn = document.querySelector('button[data-action="queue"]');
 const mainSection = document.querySelector('.card__list');
-const watched = JSON.parse(localStorage.getItem('Watched:'));
-// console.log(watched);
+const watchedMovies = JSON.parse(localStorage.getItem('Watched:'));
+console.log(watchedMovies);
 
-watchedBtn?.addEventListener("click", onWatchBtnClick);
+watchedBtn?.addEventListener('click', onWatchBtnClick);
+
+onWatchBtnClick();
 
 function onWatchBtnClick() {
-  const watchedL = watched.map(film => {
+  watchedBtn.classList.add('current-btn');
+  queueBtn.classList.remove('current-btn');
 
-    const genres = film.genres.map(genre => genre.name)
-    console.log(genres)
+  if (watchedMovies === null || watchedBtn.length === 0) {
+    mainSection.innerHTML = '';
+    return Notiflix.Notify.failure('You need to add at least 1 movie.');
+  }
 
-    renderCard(film.id,
-    film.poster_path,
-    film.title,
-    film.name,
-    genres,
-    film.first_air_date,
-    film.release_date,
-    film.vote_average)
-})
+  mainSection.innerHTML = '';
+
+  renderWatchedCard();
 }
 
-// const watchtest = watched[0];
+function renderWatchedCard() {
+  const watchedL = watchedMovies.map(film => {
+    const genres = film.genres.map(genre => genre.name);
+    console.log(genres);
 
-// const { id,
-//     poster_path,
-//     title,
-//     name,
-//     genre,
-//     release_date,
-//     first_air_date,
-//     vote_average } = watchtest;
-
-// const watchedL = watched.map(film => {
-
-//     const genres = film.genres.map(genre => genre.name)
-//     console.log(genres)
-
-//     return renderCard(film.id,
-//     film.poster_path,
-//     film.title,
-//     film.name,
-//     genres,
-//     film.first_air_date,
-//     film.release_date,
-//     film.vote_average)
-// })
-
-// // const watchedL = watched.map(film => renderCard( { id,
-// //     poster_path,
-// //     title,
-// //     name,
-// //     genre,
-// //     release_date,
-// //     first_air_date,
-// //     vote_average } = film ))
-    
-// console.log(watchedL)
+    renderCard(
+      film.id,
+      film.poster_path,
+      film.title,
+      film.name,
+      genres,
+      film.first_air_date,
+      film.release_date,
+      film.vote_average
+    );
+  });
+}
