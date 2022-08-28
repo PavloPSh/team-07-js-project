@@ -1,47 +1,107 @@
 .library__header{
     padding-top: 40px;
     padding-bottom: 60px;
-    width: 100%;
+    max-width: 100%;
     height: auto;
     background-color: rgba(0, 0, 0, 0.56);
-    background-image: url(/src/images/lib-back-desk.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-image:
+            linear-gradient(
+                rgba(0, 0, 0, 0.56),
+                rgba(0, 0, 0, 0.56)),
+             url(/src/images/lib-tab-back.jpg);
+    @media (min-device-pixel-ratio: 2),
+            (min-resolution: 192dpi),
+            (min-resolution: 2dppx) {
+                background-image: 
+                linear-gradient(
+                    rgba(0, 0, 0, 0.56),
+                    rgba(0, 0, 0, 0.56)),
+                url(/src/images/lib-tab-back@2x.jpg);
+        }
 
-}
+    }
 
 .library__button-box{
     display: flex;
     justify-content: center;
-    margin-top: 40px;
-}
+    margin-top: 60px;
+    }   
 
 .lib-button{
-    width: 148px;
-    height: 42px;
+    width: 130px;
+    height: 44px;
     text-transform: uppercase;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    color: #fff;
+    color: var(--light-color);
     background-color: transparent;
-    border: 1px solid #FFFFFF;
+    border: 1px solid var(--light-color);
     border-radius: 5px;
     cursor: pointer;
     
     &:hover,
     &:focus {
-        background-color: #FF6B01;
+        background-color: var(--accent-color);
         filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
         }
 
     &:not(:last-child){
         margin-right: 16px;
         }
-}
+    }
 
 .current-btn {
-    background-color: #FF6B01;
+    background-color: var(--accent-color);
         filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+    }
+
+
+@media screen and (min-width:480px){
+    .lib-button{
+        width: 148px;
+        height: 42px;
+        }
+
+    .library__button-box{
+        margin-top: 40px;
+        } 
+    }
+
+@media screen and (min-width:768px){
+    .lib-button{
+        width: 152px;
+        height: 44px;
+        }
+    }
+
+@media screen and (min-width: 769px){
+    .library__header{
+        background-image:
+        linear-gradient(
+                rgba(0, 0, 0, 0.56),
+                rgba(0, 0, 0, 0.56)),
+        url(/src/images/lib-desk-back.jpg);
+        @media (min-device-pixel-ratio: 2),
+            (min-resolution: 192dpi),
+            (min-resolution: 2dppx) {
+                background-image: 
+                linear-gradient(
+                    rgba(0, 0, 0, 0.56),
+                    rgba(0, 0, 0, 0.56)),
+                url(/src/images/lib-desk-back@2x.jpg);
+        }
+
+    }
+}
+
+@media screen and (min-width:1280px){
+    .lib-button{
+        width: 147px;
+        height: 42px;
+        }
+        
     }
