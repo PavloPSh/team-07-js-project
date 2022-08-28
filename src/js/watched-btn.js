@@ -5,6 +5,7 @@ const watchedBtn = document.querySelector('button[data-action="watched"]');
 const queueBtn = document.querySelector('button[data-action="queue"]');
 const mainSection = document.querySelector('.card__list');
 const watchedMovies = JSON.parse(localStorage.getItem('Watched:'));
+const loader = document.querySelector('.loader__wrapper');
 console.log(watchedMovies);
 
 watchedBtn?.addEventListener('click', onWatchBtnClick);
@@ -12,17 +13,20 @@ watchedBtn?.addEventListener('click', onWatchBtnClick);
 onWatchBtnClick();
 
 function onWatchBtnClick() {
+  loader.classList.remove('hidden');
   watchedBtn.classList.add('current-btn');
   queueBtn.classList.remove('current-btn');
 
   if (watchedMovies === null || watchedBtn.length === 0) {
     mainSection.innerHTML = '';
+    loader.classList.add('hidden');
     return Notiflix.Notify.failure('You need to add at least 1 movie.');
   }
 
   mainSection.innerHTML = '';
 
   renderWatchedCard();
+  loader.classList.add('hidden');
 }
 
 function renderWatchedCard() {

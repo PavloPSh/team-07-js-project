@@ -6,6 +6,7 @@ const trendingFilms = new filmsAPI();
 const mainSection = document.querySelector('.card__list');
 const homeBtn = document.querySelector('.header__nav-link');
 const logoLink = document.querySelector('.header__logo');
+const loader = document.querySelector('.loader__wrapper');
 
 async function TrendingFilms(event) {
   event.preventDefault();
@@ -13,6 +14,7 @@ async function TrendingFilms(event) {
   trendingFilms.currentPage = 1;
   mainSection.innerHTML = '';
   try {
+    loader.classList.remove('hidden');
     const result = await trendingFilms.getTrendingFilms();
     result.data.results.forEach(film => {
       const {
@@ -37,6 +39,7 @@ async function TrendingFilms(event) {
         vote_average
       );
     });
+    loader.classList.add('hidden');
   } catch (error) {
     console.log('error');
   }
