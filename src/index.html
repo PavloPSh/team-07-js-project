@@ -41,26 +41,44 @@
     </div>
 
     
-    <header class="home__header container">
-      <a href="index.html" class="header__logo">Filmoteka</a>
+    <header class="home__header ">
+      <div class="container">
+      <nav class="header__nav">
 
-      <form class="search-form" id="search-form">
-        <input
-          class="search-input"
-          autofocus
-          type="text"
-          name="searchData"
-          autocomplete="off"
-          placeholder="Movie search"
-        />
+        <ul class="header__nav-list">
 
-        <button class="search-button" type="submit">Search</button>
-      </form>
+            <li><a href="index.html" class="header__logo">
+              <svg class="icon-film">
+                <use href="/src/images/sprite.svg#icon-film"></use>
+              </svg>Filmoteka</a></li>
 
-      <nav>
-        <a href="index.html" class="header__nav-link">home</a>
-        <a href="library.html" class="header__nav-link">my library</a>
+          <div class="header__nav-link-box">
+            <li class="header__nav-item"><a href="index.html" class="header__nav-link current">home</a></li>
+            <li class="header__nav-item"><a href="library.html" class="header__nav-link">my library</a></li>
+          </div>
+          
+        </ul> 
+
       </nav>
+
+      <div class="header__search-box">
+        <form class="search-form" id="search-form">
+
+          <input
+            class="search-input"
+            autofocus
+            type="text"
+            name="searchData"
+            autocomplete="off"
+            placeholder="Movie search ..."/>
+  
+          <button class="search-button" type="submit"><svg class="icon-search"><use href="/src/images/sprite.svg#icon-search"></use></svg></button>
+  
+        </form>
+      </div>
+      
+    </div>
+      
     </header>
 
     <main>

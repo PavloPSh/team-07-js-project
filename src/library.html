@@ -17,22 +17,31 @@
       </div>
 
       
-    <header class="library__header container">
+    <header class="library__header">
 
+        <div class="container">
 
-        <a href="index.html" class="header__logo">Filmoteka</a>
-     
-        <div>
-            <button type="button" class="lib-button" data-action="watched">watched</button>
-            <button type="button" class="lib-button" data-action="queue">queue</button>
-        </div>
-    
-    
-        <nav>
-            <a href="index.html" class="header__nav-link">home</a>
-            <a href="library.html" class="header__nav-link">my library</a>
-        </nav>
+            <ul class="header__nav-list">
+
+                    <li><a href="index.html" class="header__logo"><svg class="icon-film">
+                        <use href="/src/images/sprite.svg#icon-film"></use>
+                      </svg>Filmoteka</a></li>
+
+                <div class="header__nav-link-box">
+                    <li class="header__nav-item"><a href="index.html" class="header__nav-link">home</a></li>
+                    <li class="header__nav-item"><a href="library.html" class="header__nav-link current">my library</a></li>
+                </div>
+            
+            </ul> 
         
+            <div class="library__button-box">
+                <button type="button" class="lib-button" data-action="watched">watched</button>
+                <button type="button" class="lib-button" data-action="queue">queue</button>
+            </div>
+    
+    
+        </div>
+
     </header>
 
     <main>
