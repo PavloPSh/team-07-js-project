@@ -1,16 +1,7 @@
-.card__list {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 60px;
-  margin-left: -30px;
-  margin-bottom: -30px;
-}
-
 .card__item {
   overflow: hidden;
-  margin-left: 15px;
-  margin-bottom: 15px;
-  flex-basis: 100%;
+  width: 100%;
+  margin-bottom: 20px;
   position: relative;
   transition-property: transform;
   transition-duration: 250ms;
@@ -22,7 +13,7 @@
 }
 
 .card__poster {
-  height: 398px;
+  width: 100%;
   object-fit: cover;
   transition: transform var(--animation-duration) var(--timing-function);
   display: block;
@@ -62,7 +53,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: #3f57b3;
+  background: #C20000;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
   color: white;
   cursor: pointer;
@@ -76,7 +67,7 @@
 }
 
 .btn-to-top:hover {
-  background-color: #2b3e88;
+  background-color: #A50000;
   transition: all 0.3s;
 }
 
@@ -99,40 +90,40 @@
   color: #ff6b08;
 }
 
-// ************************** MOB *******************
-
-@media screen and (max-width: 767px) {
-  .card__item {
-    width: 280px;
-  }
-
-  .card__poster {
-    width: 280px;
-  }
-}
-
 // ************************ TAB ***************************
 
 @media screen and (min-width: 768px) {
+  .card__list {
+    width: 704px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: -30px;
+  }
+
   .card__item {
-    width: 294px;
-    flex-basis: calc(50% - 15px);
+    width: 336px;
+    margin-bottom: 32px;
   }
 
   .card__poster {
-    width: 294px;
+    
+    height: 455px;
   }
 }
 
 // *********************** DESK ********************
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
+  .card__list {
+    width: 1216px;
+  }
+
   .card__item {
-    width: 274px;
-    flex-basis: calc(100% / 3 - 15px);
+    width: 395px;
   }
 
   .card__poster {
-    width: 274px;
+    height: 574px;
   }
 }
