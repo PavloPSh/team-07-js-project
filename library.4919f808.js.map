@@ -1,1 +1,0 @@
-{"mappings":"0xCAAAA,EAAA,kBACAA,EAAA,gBACAA,EAAA,sBACAA,EAAA,kBACAA,EAAA,wBACAA,EAAA,mB","sources":["src/lib.js"],"sourcesContent":["import './js/loader.js'\nimport './js/form.js';\nimport './js/apiServiсe.js';\nimport './js/scroll.js';\nimport './js/modal-footer.js';\nimport './js/popup-modal';\n"],"names":["require"],"version":3,"file":"library.4919f808.js.map"}
