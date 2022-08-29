@@ -1,4 +1,4 @@
-.library__header{
+.library__header {
     padding-top: 40px;
     padding-bottom: 60px;
     max-width: 100%;
@@ -8,29 +8,28 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-image:
-            linear-gradient(
-                rgba(0, 0, 0, 0.56),
-                rgba(0, 0, 0, 0.56)),
-             url(/src/images/lib-tab-back.jpg);
-    @media (min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-                background-image: 
-                linear-gradient(
-                    rgba(0, 0, 0, 0.56),
-                    rgba(0, 0, 0, 0.56)),
-                url(/src/images/lib-tab-back@2x.jpg);
-        }
+        linear-gradient(rgba(0, 0, 0, 0.56),
+            rgba(0, 0, 0, 0.56)),
+        url(/src/images/lib-tab-back.jpg);
 
+    @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.56),
+                rgba(0, 0, 0, 0.56)),
+            url(/src/images/lib-tab-back@2x.jpg);
     }
 
-.library__button-box{
+}
+
+.library__button-box {
     display: flex;
     justify-content: center;
     margin-top: 60px;
-    }   
+}
 
-.lib-button{
+.lib-button {
     width: 130px;
     height: 44px;
     text-transform: uppercase;
@@ -42,55 +41,63 @@
     border: 1px solid var(--light-color);
     border-radius: 5px;
     cursor: pointer;
-    
+
     &:hover,
     &:focus {
         background-color: var(--accent-color);
         filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
-        }
-
-    &:not(:last-child){
-        margin-right: 16px;
-        }
     }
+
+    &:not(:last-child) {
+        margin-right: 16px;
+    }
+}
+
+.clear-btn {
+    display: none;
+}
+
+.clear-btn--visible {
+    display: block;
+    margin: 20px auto 20px auto;
+}
 
 .current-btn {
     background-color: var(--accent-color);
-        filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
-    }
+    filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
+}
 
 
-@media screen and (min-width:480px){
-    .lib-button{
+@media screen and (min-width:480px) {
+    .lib-button {
         width: 148px;
         height: 42px;
-        }
-
-    .library__button-box{
-        margin-top: 40px;
-        } 
     }
 
-@media screen and (min-width:768px){
-    .lib-button{
+    .library__button-box {
+        margin-top: 40px;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .lib-button {
         width: 152px;
         height: 44px;
-        }
     }
+}
 
-@media screen and (min-width: 769px){
-    .library__header{
+@media screen and (min-width: 769px) {
+    .library__header {
         background-image:
-        linear-gradient(
-                rgba(0, 0, 0, 0.56),
+            linear-gradient(rgba(0, 0, 0, 0.56),
                 rgba(0, 0, 0, 0.56)),
-        url(/src/images/lib-desk-back.jpg);
+            url(/src/images/lib-desk-back.jpg);
+
         @media (min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-                background-image: 
-                linear-gradient(
-                    rgba(0, 0, 0, 0.56),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.56),
                     rgba(0, 0, 0, 0.56)),
                 url(/src/images/lib-desk-back@2x.jpg);
         }
@@ -98,10 +105,10 @@
     }
 }
 
-@media screen and (min-width:1280px){
-    .lib-button{
+@media screen and (min-width:1280px) {
+    .lib-button {
         width: 147px;
         height: 42px;
-        }
-        
     }
+
+}
