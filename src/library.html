@@ -21,13 +21,14 @@
     <header class="library__header">
       <div class="header__container">
         <ul class="header__nav-list">
-          <li><a href="index.html" class="header__logo">
-            <svg class="icon-film">
-              <use href="/src/images/sprite.svg#icon-film"></use>
-            </svg>
-              <span class="header__logo-text">Filmoteka</span></a>
+          <li>
+            <a href="index.html" class="header__logo">
+              <svg class="icon-film">
+                <use href="/src/images/sprite.svg#icon-film"></use>
+              </svg>
+              <span class="header__logo-text">Filmoteka</span></a
+            >
           </li>
-
 
           <div class="header__nav-link-box">
             <li class="header__nav-item">
@@ -53,6 +54,13 @@
             queue
           </button>
         </div>
+        <button
+          class="reg-btn reg-btn--lib"
+          type="button"
+          data-modal-open-registration
+        >
+          Sign up / Log in
+        </button>
       </div>
     </header>
 
@@ -83,6 +91,7 @@
       </button>
     </footer>
     <include src="./partials/footer-modal.html"></include>
+    <include src="./partials/registration-modal.html"></include>
 
     <script type="module" src="./lib.js"></script>
   </body>

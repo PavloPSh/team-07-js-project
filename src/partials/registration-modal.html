@@ -1,0 +1,56 @@
+<div class="backdrop__reg-modal js-close-modal is-hidden">
+  <div class="modal-reg">
+    <button
+      class="modal-reg__close-btn"
+      type="button"
+      data-modal-close-registration
+    >
+      <svg
+        class="modal-reg__close-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
+        ></path>
+      </svg>
+    </button>
+    <h2 class="modal-reg__title">Fill in the fields with your data</h2>
+
+    <div class="modal-reg__form">
+      <form class="form__field">
+        <div class="form__field">
+          <label for="name" class="form__label">Name</label>
+          <input type="text" name="name" id="name" class="form__input" />
+        </div>
+        <div class="form__field">
+          <label for="email" class="form__label">Email</label>
+          <input type="email" name="email" id="email" class="form__input" />
+        </div>
+        <div class="form__field">
+          <label for="password" class="form__label">Password</label>
+          <input
+            type="password"
+            name="email"
+            id="password"
+            class="form__input"
+          />
+        </div>
+        <button class="reg-btn reg-btn__submit" type="submit">Sign up</button>
+      </form>
+      <p class="modal-reg__switch-text modal-reg__switch-text--to-sign">
+        Have an account?
+        <button class="modal-reg__switch-btn" data-open-signup>Log in</button>
+      </p>
+      <p
+        class="modal-reg__switch-text modal-reg__switch-text--to-log visually-hidden"
+      >
+        Don't have an account?
+        <button class="modal-reg__switch-btn" data-open-login>Sign up</button>
+      </p>
+    </div>
+  </div>
+</div>
