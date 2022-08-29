@@ -1,7 +1,7 @@
-
 import './js/auth.js';
 import './js/loader.js';
 import './js/form.js';
+import './js/filter';
 import './js/modal-registration.js';
 import './js/homeRendering.js';
 import './js/apiServiсe.js';
