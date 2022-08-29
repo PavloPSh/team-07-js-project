@@ -1,5 +1,6 @@
 import filmsAPI from './apiServiсe';
 import { renderMovieModal } from './renderPopupCard';
+// import { onQueueBtnClick } from './queue-btn';
 const trendingFilms = new filmsAPI();
 const filmCard = document.querySelector('.section');
 filmCard.addEventListener('click', onFilmCardClick);
@@ -102,6 +103,9 @@ function onFilmCardClick(e) {
           isInWatched = false;
           e.target.innerText = 'Add to watched';
           console.log('removed from watched ');
+            if (location.href === localStorage.getItem('local-data')) {
+              return location.reload();
+            }
           return;
         }
 
@@ -145,6 +149,9 @@ function onFilmCardClick(e) {
           isInQueue = false;
           e.target.innerText = 'Add to queue';
           console.log('removed from queue');
+            if (location.href === localStorage.getItem('local-data')) {
+              return location.reload();
+            }
           return;
         }
         // logic to add movie if this movie is not in queueFilmsArray
