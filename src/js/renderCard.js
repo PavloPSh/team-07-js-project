@@ -19,11 +19,12 @@ export const renderCard = function (
   movieEl.classList.add('card__item');
   movieEl.innerHTML = `<a class="card__link" id = "${id}" href="#">
         <img src="${poster_url}" alt ="${title ?? name}" class="card__poster">
+        <div class="card__info">
             <h2 class="card__title">${title ?? name}</h2>
             <p class="card__genre">${
               genre.slice(0, 2).join(', ') + ', Інші'
             } | ${
     release_date ? release_date.slice(0, 4) : first_air_date.slice(0, 4)
-  }</p></a>`;
+  }</p></div></a>`;
   mainSection.appendChild(movieEl);
 };
