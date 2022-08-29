@@ -16,7 +16,7 @@ async function fetchFilmData(filmID) {
 function onFilmCardClick(e) {
   e.preventDefault();
   if (
-    e.target.closest('.card__link')?.querySelector('card__poster') === undefined
+    e.target.closest('.card__link')?.querySelector('.card__poster') === undefined
   ) {
     return;
   }
@@ -205,7 +205,9 @@ function onModalClose(e) {
     e.keyCode === 27 ||
     e.target.classList.contains('popup-button__close')
   ) {
+    window.location.reload();
     modalRef.classList.remove('popup');
     modalRef.innerHTML = '';
   }
+  
 }
