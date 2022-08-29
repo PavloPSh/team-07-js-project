@@ -157,8 +157,7 @@ function onFilmCardClick(e) {
           return
           }
         }
-      }
-    });
+      });
 
     // popup render
     const {
