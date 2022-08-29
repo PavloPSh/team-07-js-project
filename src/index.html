@@ -41,42 +41,44 @@
     </div>
 
     
-    <header class="home__header ">
-      <div class="container">
-      <nav class="header__nav">
+    <header class="home__header">
+      <div class="header__container">
+        <nav class="header__nav">
 
-        <ul class="header__nav-list">
+          <ul class="header__nav-list">
 
-            <li><a href="index.html" class="header__logo">
-              <svg class="icon-film">
-                <use href="/src/images/sprite.svg#icon-film"></use>
-              </svg>Filmoteka</a></li>
+              <li><a href="index.html" class="header__logo">
+                <svg class="icon-film">
+                  <use href="/src/images/sprite.svg#icon-film"></use>
+                </svg>
+                  <span class="header__logo-text">Filmoteka</span></a>
+              </li>
 
-          <div class="header__nav-link-box">
-            <li class="header__nav-item"><a href="index.html" class="header__nav-link current">home</a></li>
-            <li class="header__nav-item"><a href="library.html" class="header__nav-link">my library</a></li>
-          </div>
-          
-        </ul> 
+            <div class="header__nav-link-box">
+              <li class="header__nav-item"><a href="index.html" class="header__nav-link current">home</a></li>
+              <li class="header__nav-item"><a href="library.html" class="header__nav-link">my library</a></li>
+            </div>
+            
+          </ul> 
 
-      </nav>
+        </nav>
 
-      <div class="header__search-box">
-        <form class="search-form" id="search-form">
+        <div class="header__search-box">
+          <form class="search-form" id="search-form">
 
-          <input
-            class="search-input"
-            autofocus
-            type="text"
-            name="searchData"
-            autocomplete="off"
-            placeholder="Movie search ..."/>
-  
-          <button class="search-button" type="submit"><svg class="icon-search"><use href="/src/images/sprite.svg#icon-search"></use></svg></button>
-  
-        </form>
-      </div>
-      
+            <input
+              class="search-input"
+              autofocus
+              type="text"
+              name="searchData"
+              autocomplete="off"
+              placeholder="Movie search ..."/>
+    
+            <button class="search-button" type="submit"><svg class="icon-search"><use href="/src/images/sprite.svg#icon-search"></use></svg></button>
+    
+          </form>
+        </div>
+      <button class="reg-btn" type="button" data-modal-open-registration>Sign up / Log in</button>
     </div>
       
     </header>
@@ -99,12 +101,13 @@
         <div class="modal"></div>
       </section>
     </main>
-    <a class="btn-to-top" title="Return to top">
-      <span class="material-icons">arrow_upward</span></a
-    >
+    
     <footer class="footer">
+      <a class="btn-to-top" title="Return to top">
+        <span class="material-icons">arrow_upward</span>
+      </a>
       <p class="footer__text">
-        ©  2022 | All Rights Reserved | Developed with</p> 
+        &#169;  2022 | All Rights Reserved | Developed with</p> 
         <div class="heart"></div>
         <p class="footer__text">by</p>
       
@@ -115,7 +118,7 @@
       
   </footer>
  <include src="./partials/footer-modal.html"></include>
- 
+ <include src="./partials/registration-modal.html"></include>
 
   <script type="module" src="./index.js"></script>
 

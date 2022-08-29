@@ -11,18 +11,17 @@ const loader = document.querySelector('.loader__wrapper');
 
 let inputData = '';
 
-const onFormSubmit = function (event) {
+async function onFormSubmit(event) {
   event.preventDefault();
   trendingFilms.currentPage = 1;
   mainSection.innerHTML = '';
-
   inputData = event.currentTarget.elements.searchData.value;
   if (inputData === '') {
     return Notiflix.Notify.warning('try to find something');
   }
-  trendingFilms.getMovieSearch(inputData).then(result => {
+  try {
+    const result = await trendingFilms.getMovieSearch(inputData);
     loader.classList.remove('hidden');
-
     if (result.data.total_results === 0) {
       noFilmFound();
       loader.classList.add('hidden');
@@ -40,36 +39,30 @@ const onFormSubmit = function (event) {
         release_date,
       } = film;
       let genre = getGenreName(genre_ids);
-      try {
-        setTimeout(() => {
-          renderCard(
-            id,
-            poster_path,
-            title,
-            name,
-            genre,
-            first_air_date,
-            release_date,
-            vote_average
-          );
-
-          loader.classList.add('hidden');
-        }, 150);
-        setTimeout(() => {
-          infinteScroll();
-        }, 500);
-      } catch (error) {
-        console.log('error');
-      }
+      renderCard(
+        id,
+        poster_path,
+        title,
+        name,
+        genre,
+        first_air_date,
+        release_date,
+        vote_average
+      );
     });
-  });
-};
+    loader.classList.add('hidden');
+  } catch (error) {
+    console.log('error');
+  }
+  infinteScroll();
+}
 
 searchForm?.addEventListener('submit', onFormSubmit);
 
-function LoadMorePhoto() {
+async function LoadMorePhoto() {
   trendingFilms.currentPage += 1;
-  trendingFilms.getMovieSearch(inputData).then(result => {
+  try {
+    const result = await trendingFilms.getMovieSearch(inputData);
     if (result.data.total_pages === 1) {
       endOfSearch();
       return;
@@ -86,27 +79,21 @@ function LoadMorePhoto() {
         release_date,
       } = film;
       let genre = getGenreName(genre_ids);
-      try {
-        setTimeout(() => {
-          renderCard(
-            id,
-            poster_path,
-            title,
-            name,
-            genre,
-            first_air_date,
-            release_date,
-            vote_average
-          );
-        }, 100);
-        setTimeout(() => {
-          infinteScroll();
-        }, 500);
-      } catch (error) {
-        console.log('error');
-      }
+      renderCard(
+        id,
+        poster_path,
+        title,
+        name,
+        genre,
+        first_air_date,
+        release_date,
+        vote_average
+      );
     });
-  });
+  } catch (error) {
+    console.log('error');
+  }
+  infinteScroll();
 }
 
 const infinteObserver = new IntersectionObserver(

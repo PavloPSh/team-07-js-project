@@ -33,4 +33,10 @@ export default class filmsAPI {
     );
     return response;
   }
+  async getFilmTrailler() {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${filmID}/videos?api_key=${API_KEY}&language=${this.lang}`
+    );
+    return response;
+  }
 }

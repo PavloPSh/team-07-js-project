@@ -19,14 +19,14 @@
     </div>
 
     <header class="library__header">
-      <div class="container">
+      <div class="header__container">
         <ul class="header__nav-list">
           <li>
-            <a href="index.html" class="header__logo"
-              ><svg class="icon-film">
+            <a href="index.html" class="header__logo">
+              <svg class="icon-film">
                 <use href="/src/images/sprite.svg#icon-film"></use>
               </svg>
-              Filmoteka</a
+              <span class="header__logo-text">Filmoteka</span></a
             >
           </li>
 
@@ -54,6 +54,13 @@
             queue
           </button>
         </div>
+        <button
+          class="reg-btn reg-btn--lib"
+          type="button"
+          data-modal-open-registration
+        >
+          Sign up / Log in
+        </button>
       </div>
     </header>
 
@@ -66,6 +73,7 @@
             alt="Loading..."
           />
         </div>
+        <button type="button" class="clear-btn">Clear movies list</button>
         <ul class="card__list"></ul>
 
         <div class="modal"></div>
@@ -84,7 +92,9 @@
       </button>
     </footer>
     <include src="./partials/footer-modal.html"></include>
+    <include src="./partials/registration-modal.html"></include>
 
     <script type="module" src="./lib.js"></script>
   </body>
 </html>
+
