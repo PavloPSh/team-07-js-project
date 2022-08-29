@@ -16,6 +16,10 @@
     border-radius: 5px;
     cursor: pointer;
 
+    &--lib {
+        bottom: -53px;
+    }
+
     @media screen and (min-width: 1280px) {
         right: 40px;
     }
