@@ -53,7 +53,7 @@ async function onFormSubmit(event) {
   infinteScroll();
 }
 
-refs.searchForm.addEventListener('submit', onFormSubmit);
+refs.searchForm?.addEventListener('submit', onFormSubmit);
 
 async function LoadMorePhoto() {
   trendingFilms.currentPage += 1;
