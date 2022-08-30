@@ -1,4 +1,3 @@
-import './js/auth.js';
 import './js/loader.js';
 import './js/form.js';
 import './js/filter';
@@ -9,3 +8,4 @@ import './js/scroll.js';
 import './js/modal-footer.js';
 import './js/popup-modal';
 import './js/theme';
+import './js/auth.js';

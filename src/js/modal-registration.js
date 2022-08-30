@@ -1,8 +1,11 @@
+import { on } from 'process';
+
 const refs = {
   openModalBtn: document.querySelector('[data-modal-open-registration]'),
   closeModalBtn: document.querySelector('[data-modal-close-registration]'),
   backdrop: document.querySelector('.backdrop__reg-modal'),
-  formEL: document.querySelector('.form__field'),
+  regForm: document.querySelector('#register_form'),
+  logForm: document.querySelector('#login_form'),
   logInSwitcher: document.querySelector('[data-open-signup]'),
   signUpSwitcher: document.querySelector('[data-open-login]'),
   logInSwitcherText: document.querySelector('.modal-reg__switch-text--to-sign'),
@@ -14,6 +17,8 @@ refs.closeModalBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onClickBackdrop);
 refs.logInSwitcher.addEventListener('click', onLogInSwitcherClick);
 refs.signUpSwitcher?.addEventListener('click', onSignUpSwitcherClick);
+refs.logForm.addEventListener('submit', onCloseModal);
+refs.regForm.addEventListener('submit', onCloseModal);
 
 function onOpenModal() {
   refs.backdrop.classList.remove('is-hidden');
@@ -40,13 +45,13 @@ function onPressESC(e) {
 function onLogInSwitcherClick() {
   refs.logInSwitcherText.classList.toggle('visually-hidden');
   refs.signUpSwitcherText.classList.toggle('visually-hidden');
-  refs.formEL.innerHTML =
-    '<div class="form__field"><label for="email" class="form__label">Email</label><input type="email" name="email" id="email" class="form__input" /></div><div class="form__field"><label for="password" class="form__label">Password</label><input type="password" name="email" id="password" class="form__input"/></div><button class="reg-btn reg-btn__submit" type="submit">Log in</button>';
+  refs.logForm.classList.toggle('visually-hidden');
+  refs.regForm.classList.toggle('visually-hidden');
 }
 
 function onSignUpSwitcherClick() {
   refs.logInSwitcherText.classList.toggle('visually-hidden');
   refs.signUpSwitcherText.classList.toggle('visually-hidden');
-  refs.formEL.innerHTML =
-    '<div class="form__field"><label for="name" class="form__label">Name</label><input type="text" name="name" id="name" class="form__input" /></div><div class="form__field"><label for="email" class="form__label">Email</label><input type="email" name="email" id="email" class="form__input" /></div><div class="form__field"><label for="password" class="form__label">Password</label><input type="password" name="email" id="password" class="form__input"/></div><button class="reg-btn reg-btn__submit" type="submit">Sign up</button>';
+  refs.logForm.classList.toggle('visually-hidden');
+  refs.regForm.classList.toggle('visually-hidden');
 }

@@ -7,3 +7,4 @@ import './js/modal-footer.js';
 import './js/popup-modal-lib';
 import './js/watched-btn.js';
 import './js/queue-btn.js';
+import './js/auth.js';
