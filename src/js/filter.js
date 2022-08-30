@@ -1,6 +1,5 @@
 import { genres } from './genres';
-const loader = document.querySelector('.loader__wrapper');
-
+import { refs } from './refs';
 import { renderCard } from './renderCard';
 import { getGenreName } from './getGenreName';
 import Notiflix from 'notiflix';
@@ -8,77 +7,68 @@ import Notiflix from 'notiflix';
 import filmsAPI from './apiServiсe';
 const filters = new filmsAPI();
 
-const mainSection = document.querySelector('.card__list');
-const formEl = document.querySelector('.genre-search');
-const searchGenreEl = document.querySelector('#genres');
-const searchBtnOpen = document.querySelector('.search-btn--open');
-const searchBtnClose = document.querySelector('.search-btn--close');
-const searchBackdrop = document.querySelector('.filter__wrap');
-
 let genresList = genres;
 
-formEl.addEventListener('change', event => {
+refs.formEl.addEventListener('change', event => {
   let formValue = event.target;
   event.preventDefault();
   filters.currentPage = 1;
 
   if (formValue.id === 'years') {
     if (formValue.value !== 'year') {
-      loader.classList.remove('hidden');
-      onClickSearchBtnClose();
+      refs.loader.classList.remove('hidden');
       Notiflix.Notify.success(
-        `Hooray! Here your films by ${formValue.value} year!`
+        `Congratulations! found movies for ${formValue.value} year!`
       );
       filters.year = formValue.value;
       markupMoviesByYear();
-      loader.classList.remove('hidden');
+      refs.loader.classList.remove('hidden');
     }
   }
   if (formValue.id === 'genres') {
     if (formValue.value !== 'genres') {
-      loader.classList.remove('hidden');
-      Notiflix.Notify.success(`Hooray! Here your ${formValue.value} movies!`);
+      refs.loader.classList.remove('hidden');
+      Notiflix.Notify.success(
+        `Congratulations! found movies by genre ${formValue.value}!`
+      );
       for (const el of genresList) {
         if (el.name === formValue.value) {
           filters.genreId = el.id;
           markupMoviesByGenres();
-          onClickSearchBtnClose();
         }
       }
-      loader.classList.remove('hidden');
+      refs.loader.classList.remove('hidden');
     }
   }
   if (formValue.id === 'popularity') {
     if (formValue.value !== 'option') {
-      loader.classList.remove('hidden');
-      searchBackdrop.classList.remove('is-open');
-      onClickSearchBtnClose();
-      Notiflix.Notify.success(`Hooray! We found most popular movies!`);
-      filters.popularity = formValue.value;
-      console.log(
-        '🚀 ~ file: filter.js ~ line 68 ~ filters.popularity',
-        filters.popularity
+      refs.loader.classList.remove('hidden');
+      //  refs.searchBackdrop.classList.remove('is-open');
+      Notiflix.Notify.success(
+        `Congratulations! found the most popular movies!`
       );
+      filters.popularity = formValue.value;
       markupMoviesByPopularity();
-      loader.classList.remove('hidden');
+      refs.loader.classList.remove('hidden');
     }
   }
-  formEl.reset();
+  // refs.formEl.reset();
 });
 
-searchBtnOpen.addEventListener('click', onClickSearchBtnOpen);
-searchBtnClose.addEventListener('click', onClickSearchBtnClose);
+refs.searchBtnOpen.addEventListener('click', onClickSearchBtnOpen);
+refs.searchBtnClose.addEventListener('click', onClickSearchBtnClose);
+
 function onClickSearchBtnOpen() {
-  searchBackdrop.classList.add('is-open');
+  refs.searchBackdrop.classList.add('is-open');
 }
 
 function onClickSearchBtnClose() {
-  searchBackdrop.classList.remove('is-open');
+  refs.searchBackdrop.classList.remove('is-open');
 }
 async function markupMoviesByGenres() {
-  mainSection.innerHTML = '';
+  refs.mainSection.innerHTML = '';
   try {
-    loader.classList.remove('hidden');
+    refs.loader.classList.remove('hidden');
     const result = await filters.getMoviesByGenres();
     result.data.results.forEach(film => {
       const {
@@ -104,16 +94,16 @@ async function markupMoviesByGenres() {
         vote_average
       );
     });
-    loader.classList.add('hidden');
+    refs.loader.classList.add('hidden');
   } catch (error) {
     console.log(error);
   }
   infinteScrollByGenres();
 }
 async function markupMoviesByPopularity() {
-  mainSection.innerHTML = '';
+  refs.mainSection.innerHTML = '';
   try {
-    loader.classList.remove('hidden');
+    refs.loader.classList.remove('hidden');
     const result = await filters.getMoviesByPopularity();
     result.data.results.forEach(film => {
       const {
@@ -138,16 +128,16 @@ async function markupMoviesByPopularity() {
         vote_average
       );
     });
-    loader.classList.add('hidden');
+    refs.loader.classList.add('hidden');
   } catch (error) {
     console.log(error);
   }
   infinteScrollByPopularity();
 }
 async function markupMoviesByYear() {
-  mainSection.innerHTML = '';
+  refs.mainSection.innerHTML = '';
   try {
-    loader.classList.remove('hidden');
+    refs.loader.classList.remove('hidden');
     const result = await filters.getMoviesByYear();
     result.data.results.forEach(film => {
       const {
@@ -172,7 +162,7 @@ async function markupMoviesByYear() {
         vote_average
       );
     });
-    loader.classList.add('hidden');
+    refs.loader.classList.add('hidden');
   } catch (error) {
     console.log(error);
   }

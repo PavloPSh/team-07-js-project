@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filmoteka</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sass/index.scss" />
+  </head>
+  <body>
+    <div class="loader__backdrop">
+      <div class="loader"></div>
+    </div>
+
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -65,10 +85,26 @@
   </main>
 
 
-  <footer class="footer sections-footer">
-    <div class="footer-copyright">
-      <div class="footer-copyright--left">
-        <p class="footer-copyright--text">&#169; 2022 | All Rights Reserved |</p>
+    <footer class="footer sections-footer">
+      <div class="footer-copyright">
+        <div class="footer-copyright--left">
+          <p class="footer-copyright--text">
+            &#169; 2022 | All Rights Reserved |
+          </p>
+        </div>
+        <div class="footer-copyright--right">
+          <p class="footer-copyright--text">Developed with</p>
+          <div class="heart"></div>
+          <p class="footer-copyright--text">by</p>
+
+          <button
+            type="button"
+            class="footer-copyright--btn"
+            data-modal-open-contacts
+          >
+            <span>GoIT Students</span>
+          </button>
+        </div>
       </div>
       <div class="footer-copyright--right">
         <p class="footer-copyright--text">Developed with</p>
@@ -84,7 +120,9 @@
   <include src="./partials/footer-modal.html"></include>
   <include src="./partials/registration-modal.html"></include>
 
-  <script type="module" src="./lib.js"></script>
-</body>
 
+
+    <script type="module" src="./lib.js"></script>
+  </body>
 </html>
+

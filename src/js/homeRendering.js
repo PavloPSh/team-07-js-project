@@ -1,20 +1,17 @@
 import filmsAPI from './apiServiсe';
 import { renderCard } from './renderCard';
 import { getGenreName } from './getGenreName';
+import { refs } from './refs';
 
 const trendingFilms = new filmsAPI();
-const mainSection = document.querySelector('.card__list');
-const homeBtn = document.querySelector('.header__nav-link');
-const logoLink = document.querySelector('.header__logo');
-const loader = document.querySelector('.loader__wrapper');
 
 async function TrendingFilms(event) {
   event.preventDefault();
-  document.querySelector('#search-form').firstElementChild.value = '';
+  refs.searchForm.firstElementChild.value = '';
   trendingFilms.currentPage = 1;
-  mainSection.innerHTML = '';
+  refs.mainSection.innerHTML = '';
   try {
-    loader.classList.remove('hidden');
+    refs.loader.classList.remove('hidden');
     const result = await trendingFilms.getTrendingFilms();
     result.data.results.forEach(film => {
       const {
@@ -39,14 +36,14 @@ async function TrendingFilms(event) {
         vote_average
       );
     });
-    loader.classList.add('hidden');
+    refs.loader.classList.add('hidden');
   } catch (error) {
     console.log('error');
   }
   infinteScroll();
 }
-logoLink.addEventListener('click', TrendingFilms);
-homeBtn.addEventListener('click', TrendingFilms);
+refs.logoLink.addEventListener('click', TrendingFilms);
+refs.homeBtn.addEventListener('click', TrendingFilms);
 window.addEventListener('load', TrendingFilms);
 
 async function LoadMorePhoto() {
