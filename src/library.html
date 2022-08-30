@@ -17,51 +17,19 @@
   </head>
 
 <body>
-  <div class="loader__backdrop">
-    <div class="loader"></div>
-  </div>
+  <include src="./partials/loader.html"></include>
+  <include src="./partials/library-header.html"></include>
 
-  <header class="library__header">
-    <div class="header__container">
-      <ul class="header__nav-list">
-        <li>
-          <a href="index.html" class="header__logo">
-            <svg class="icon-film">
-              <use href="/src/images/sprite.svg#icon-film"></use>
-            </svg>
-            <span class="header__logo-text">Filmoteka</span></a>
-        </li>
-
-        <div class="header__nav-link-box">
-          <li class="header__nav-item">
-            <a href="index.html" class="header__nav-link">home</a>
-          </li>
-          <li class="header__nav-item">
-            <a href="library.html" class="header__nav-link current">my library</a>
-          </li>
-        </div>
-      </ul>
-
-      <div class="library__button-box">
-        <button type="button" class="lib-button current-btn" data-action="watched">
-          watched
-        </button>
-        <button type="button" class="lib-button" data-action="queue">
-          queue
-        </button>
-      </div>
-      <button class="reg-btn reg-btn--lib" type="button" data-modal-open-registration>
-        Sign up / Log in
-      </button>
-    </div>
-  </header>
 
   <main>
     <section class="section container">
+      
       <div class="loader__wrapper">
         <img class="loader__in-section" src="./images/loading.gif" alt="Loading..." />
       </div>
+
       <button type="button" class="lib-button clear-btn">Clear movies list</button>
+
       <ul class="card__list"></ul>
 
       <div class="modal"></div>
@@ -69,29 +37,7 @@
   </main>
 
 
-    <footer class="footer sections-footer">
-      <div class="footer-copyright">
-        <div class="footer-copyright--left">
-          <p class="footer-copyright--text">
-            &#169; 2022 | All Rights Reserved |
-          </p>
-        </div>
-        <div class="footer-copyright--right">
-          <p class="footer-copyright--text">Developed with</p>
-          <div class="heart"></div>
-          <p class="footer-copyright--text">by</p>
-
-          <button
-            type="button"
-            class="footer-copyright--btn"
-            data-modal-open-contacts
-          >
-            <span>GoIT Students</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <include src="./partials/library-footer.html"></include>
   <include src="./partials/footer-modal.html"></include>
   <include src="./partials/registration-modal.html"></include>
 
