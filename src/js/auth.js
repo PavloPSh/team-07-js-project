@@ -1,3 +1,6 @@
+import Notiflix from 'notiflix';
+
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 // import firebase from 'firebase/app';
@@ -25,6 +28,13 @@ const firebaseApp = initializeApp({
 // const analytics = getAnalytics(app);
 
 // console.log(app);
+const sendToDBFormBtn = document.getElementById('sendToDBFormBtn');
+const libraryDBPopup = document.getElementById('libraryDBPopup');
+const showMovieFromDB = document.getElementById('showMovieFromDB');
+
+// const storage refs
+const STORAGE_WATCHED = 'Watched:';
+const STORAGE_QUEUE = 'Queque:';
 
 const auth = getAuth(firebaseApp);
 // const db = getFirestore(firebaseApp);
@@ -33,29 +43,61 @@ const auth = getAuth(firebaseApp);
 // const snapshot = await getDocs(todosCol);
 
 // detect state
+const logRegBtn = document.getElementById('log_reg_button');
 
 onAuthStateChanged(auth, user => {
   if (user != null) {
     // console.log('logged in');
   } else {
-    // console.log('');
+    // console.log('no user');
   }
 });
 
 function fetchMoviesByIdToken(token) {
   // console.log(token);
   if (!token) {
-    console.log('no authorize');
+    // Notiflix.Notify.warning('Invalid email'); 
+    return 
     // return Promise.resolve('<p> No token</p>')
   }
+  
+   
+    
   return fetch(
     `https://filmoteca-07-2022-default-rtdb.firebaseio.com/movies.json?auth=${token}`
   )
     .then(response => response.json())
     .then(movies => {
-      console.log('movies', movies);
+      // console.log('movies', movies);
+      const lastAddedMovies = movies[Object.keys(movies)[Object.keys(movies).length - 1]];
+      // console.log(lastAddedMovies);
+      // console.log("last queue", lastAddedMovies.queueMovies);
+      // console.log("last watched", lastAddedMovies.watchedMovies);
+      const wathedTitles = [];
+      const queueTitles = [];
+
+      if (lastAddedMovies.watchedMovies) {
+        lastAddedMovies.watchedMovies.forEach(element => {
+          wathedTitles.push(element.title)
+        });
+      }
+      if (lastAddedMovies.queueMovies) {
+        lastAddedMovies.queueMovies.forEach(element => {
+         queueTitles.push(element.title)
+        });
+      }
+      // console.log(wathedTitles);
+      // console.log(queueTitles);
+      if (libraryDBPopup) {
+        libraryDBPopup.innerHTML = `
+                <div>
+                <p>watched:"${wathedTitles}</p>
+                <p>queue:"${queueTitles}</p>
+                </div>`
+        
+      }
     })
-    .then(console.log('Authorized Welcome'));
+    
 }
 
 function authWithEmailAndPassword(email, password) {
@@ -77,7 +119,32 @@ function authWithEmailAndPassword(email, password) {
     )
       .then(response => response.json())
       // .then(data => console.log(data))
-      .then(data => data.idToken)
+      .then(data => {
+        // console.log(data);
+
+        if (data.error) {
+              if (data.error.message == 'INVALID_EMAIL') {
+              Notiflix.Notify.warning('Invalid email');
+              return
+            }
+            if (data.error.message == 'INVALID_PASSWORD') {
+              Notiflix.Notify.warning('Invalid password');
+              return
+            }
+        }
+        else {
+        // console.log(data.email);
+        Notiflix.Notify.success(`Welcome back !!! Movie lover with email: ${data.email}`);
+          logRegBtn.classList.add('logged');
+          if (sendToDBFormBtn) {
+            sendToDBFormBtn.removeAttribute('disabled');
+            showMovieFromDB.removeAttribute('disabled');
+          }
+          
+        return data.idToken
+      }
+        
+      })
   );
 }
 
@@ -85,7 +152,23 @@ function authFormHandler(e) {
   e.preventDefault();
   const email = e.target.querySelector('#email').value;
   const password = e.target.querySelector('#password').value;
-  console.log(email, password);
+  // console.log(email, password);
+
+  if (email == "") {
+    Notiflix.Notify.warning('Missing email');
+    login_form.reset();
+    return
+  }
+    if (password == "") {
+      Notiflix.Notify.warning('Missing password');
+      login_form.reset();
+      return
+  }
+      if (password.length < 6) {
+      Notiflix.Notify.warning('Weak password. Should be more then 6 characters');
+      login_form.reset();
+      return
+  }
 
   authWithEmailAndPassword(email, password).then(token => {
     return fetchMoviesByIdToken(token);
@@ -118,7 +201,29 @@ function createUserWithEmailAndPassword(email, password) {
     }
   )
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => {
+      // console.log(data);
+      // console.log(data.error.message);
+  
+      if (data.error) {
+          if (data.error.message == 'EMAIL_EXISTS') {
+          Notiflix.Notify.warning('Email exists');
+          return
+        }
+        if (data.error.message == 'INVALID_EMAIL') {
+          Notiflix.Notify.warning('Invalid email');
+          return
+      }
+      } else {
+        // console.log(data.email);
+        Notiflix.Notify.success(`Welcome. You have been sign in with email: ${data.email}`);
+        logRegBtn.classList.add('logged');
+         if (sendToDBFormBtn) {
+            sendToDBFormBtn.removeAttribute('disabled');
+            showMovieFromDB.removeAttribute('disabled');
+          }
+      }
+    });
 }
 
 function regFormHandler(e) {
@@ -127,7 +232,23 @@ function regFormHandler(e) {
   const password = e.target.querySelector('#reg_password').value;
   // const name = e.target.querySelector('#reg_name').value;
 
-  console.log(email, password);
+  // console.log(email, password);
+
+  if (email == "") {
+    Notiflix.Notify.warning('Missing email');
+    register_form.reset();
+    return
+  }
+    if (password == "") {
+      Notiflix.Notify.warning('Missing password');
+      register_form.reset();
+      return
+  }
+      if (password.length < 6) {
+      Notiflix.Notify.warning('Weak password. Should be more then 6 characters');
+      register_form.reset();
+      return
+  }
   createUserWithEmailAndPassword(email, password);
   // .then(token => {
 
@@ -138,12 +259,12 @@ const register_form = document.getElementById('register_form');
 // console.log(login_form);
 register_form.addEventListener('submit', regFormHandler);
 
-function addInfoToDB(test_string) {
+function addInfoToDB(addedMovies) {
   return fetch(
     'https://filmoteca-07-2022-default-rtdb.firebaseio.com/movies.json',
     {
       method: 'POST',
-      body: JSON.stringify(test_string),
+      body: JSON.stringify(addedMovies),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -151,41 +272,53 @@ function addInfoToDB(test_string) {
   )
     .then(response => response.json())
     .then(response => {
-      test_string.id = response.name;
-      return test_string;
+      // console.log(response);
+      // console.log('added to DB')
+        Notiflix.Notify.success(`Added movies to DB`);
+
+      addedMovies.id = response.name;
+      return addedMovies;
     })
-    .then(addToLocalStorage);
+    // .then(addToLocalStorage);
   // .then(render)
 }
 
-function addToLocalStorage(test_string) {
-  const all = getMoviesFromLocalStorage();
-  all.push(test_string);
-  localStorage.setItem('movies', JSON.stringify(all));
-}
-function getMoviesFromLocalStorage() {
-  return JSON.parse(localStorage.getItem('movies') || '[]');
-}
-
-// function testFormHandler(e) {
-//     e.preventDefault();
-//     const inputVal = e.target.querySelector('#test_input').value;
-
-//     const textDate = {
-//         text: inputVal,
-//         date: new Date().toJSON()
-//     }
-//     console.log(textDate);
-
-//     // sbm_btn.disabled = true
-//     addInfoToDB(textDate).then(() => {
-//         inputVal.value = ''
-//         // sbm_btn.disabled = false
-
-//     })
-
+// function addToLocalStorage(test_string) {
+//   const all = getMoviesFromLocalStorage();
+//   all.push(test_string);
+//   localStorage.setItem('movies', JSON.stringify(all));
+// }
+// function getMoviesFromLocalStorage() {
+//   return JSON.parse(localStorage.getItem('movies') || '[]');
 // }
 
-// const test_form = document.getElementById('test_form');
-// // const sbm_btn = document.getElementById('submit_test');
-// test_form.addEventListener('submit', testFormHandler);
+function sendToDBFormHandler(e) {
+    e.preventDefault();
+    // const inputVal = e.target.querySelector('#test_input').value;
+    const watchedFilmsArrayDB = JSON.parse(localStorage.getItem(STORAGE_WATCHED)) || [];
+    const queueFilmsArrayDB = JSON.parse(localStorage.getItem(STORAGE_QUEUE)) || [];
+
+    const movieBase = {
+      watchedMovies: watchedFilmsArrayDB,
+      queueMovies:queueFilmsArrayDB,
+      date: new Date().toJSON()
+    }
+    console.log(movieBase);
+
+    // sbm_btn.disabled = true
+  addInfoToDB(movieBase)
+    // .then(() => {
+    //     inputVal.value = ''
+    //     // sbm_btn.disabled = false
+
+    // })
+
+}
+
+function showRenderedMovieFromDB() {
+  libraryDBPopup?.classList.add('visible');
+}
+
+const sendToDBForm = document.getElementById('sendToDBForm');
+sendToDBForm?.addEventListener('submit', sendToDBFormHandler);
+showMovieFromDB?.addEventListener('click', showRenderedMovieFromDB);
