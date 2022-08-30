@@ -131,3 +131,15 @@
 
     }
 }
+.library_DBfilms_popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: wheat;
+    display: none;
+    max-width: 400px;
+}
+.library_DBfilms_popup.visible {
+  
+    display: block;
+}
