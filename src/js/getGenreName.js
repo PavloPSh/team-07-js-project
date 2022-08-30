@@ -16,8 +16,12 @@ FetchGenreName();
 
 export const getGenreName = function (ids) {
   let genre = [];
+  if(ids.length === 0){
+    return undefined
+  }else{
   ids.forEach(id => {
     genre.push(localStorage.getItem(id));
   });
-  return genre;
+  };
+  return genre
 };

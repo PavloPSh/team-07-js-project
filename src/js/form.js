@@ -35,6 +35,8 @@ async function onFormSubmit(event) {
         release_date,
       } = film;
       let genre = getGenreName(genre_ids);
+      console.log("🚀 ~ file: form.js ~ line 38 ~ onFormSubmit ~ genre", genre + id)
+      
       renderCard(
         id,
         poster_path,

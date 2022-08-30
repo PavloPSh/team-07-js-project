@@ -23,9 +23,9 @@ export const renderCard = function (
         <div class="card__info">
             <h2 class="card__title">${title ?? name}</h2>
             <p class="card__genre">${
-              genre.slice(0, 2).join(', ') + ', Інші'
+              genre ? genre.slice(0, 2).join(', ') + ', Other' : 'Unknown'
             } | ${
-    release_date ? release_date.slice(0, 4) : first_air_date.slice(0, 4)
+    release_date ? release_date.slice(0, 4) : release_date ? first_air_date.slice(0, 4) : 'Unknown'
   }</p></div></a>`;
   refs.mainSection.appendChild(movieEl);
 };

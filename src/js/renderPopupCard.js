@@ -43,7 +43,7 @@ export const renderMovieModal = function (
                 title ?? name
               }</span></li>
               <li class="popup__item">Genre <span class="popup__span popup__span__name">${
-                genre.slice(0, 2).join(', ') + ', Інші'
+                genre.slice(0, 2).join(', ') + ', Other'
               }</span></li>
             </ul>
             <h1 lang="en" class="popup__about">About</h1>

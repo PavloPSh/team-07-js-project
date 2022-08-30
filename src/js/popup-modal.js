@@ -172,7 +172,11 @@ function onFilmCardClick(e) {
       genres,
     } = film;
     const genre = [];
-    genres.forEach(res => genre.push(res.name));
+    if(genres.length === 0){
+      genre.push('Unknown');
+    }else{
+      genres.forEach(res => genre.push(res.name));
+    }; 
     try {
       setTimeout(() => {
         renderMovieModal(
