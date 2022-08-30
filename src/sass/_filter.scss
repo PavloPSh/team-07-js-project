@@ -1,0 +1,87 @@
+.filter {
+  position: relative;
+  top: -77px;
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  margin-left: 90px;
+  padding: 10px 30px;
+  color: red;
+}
+
+.filter__wrap {
+  display: none;
+}
+
+.filter__wrap.is-open {
+  display: block;
+
+  z-index: 1;
+
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: fit-content;
+}
+
+.genre-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px 30px;
+  max-width: 250px;
+  border-radius: 5px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -84px;
+    padding: 30px 30px;
+    max-width: max-content;
+  }
+}
+
+.search-label {
+  color: var(--light-color);
+  font-weight: 500;
+  margin: 20px 0px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin: 0 20px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+select {
+  border: 1px solid rgb(230, 199, 142);
+  border-radius: 5px;
+}
+
+option {
+  padding: 20px;
+  background-color: rgb(246, 242, 238);
+}
+
+.first-opt {
+  background-color: rgb(235, 224, 245);
+}
