@@ -11,6 +11,7 @@
     text-align: center; 
     width: 100%;   
     font-size: 19px;
+    transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
       
       @media screen and (max-width: 767px) {
