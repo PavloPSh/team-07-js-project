@@ -1,15 +1,15 @@
 
-  .footer {
+  footer {
     opacity: 0.6;
     display: flex;
     justify-content: center;
     padding: 20px 0;
-    background-color: black;
+    background-color:var(--light-color);
     position: fixed;
     right: 0;
     bottom: 0;
     text-align: center; 
-    width: 99%;   
+    width: 100%;   
     font-size: 19px;
 
       
