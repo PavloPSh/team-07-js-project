@@ -1,30 +1,26 @@
 import Notiflix from 'notiflix';
 import { renderCard } from './renderCard';
-import filmsAPI from './apiServiсe';
 import './modal-footer';
 import { getGenreName } from './getGenreName';
+import { refs } from './refs';
 
+import filmsAPI from './apiServiсe';
 const trendingFilms = new filmsAPI();
-const searchForm = document.querySelector('#search-form');
-const mainSection = document.querySelector('.card__list');
-const loader = document.querySelector('.loader__wrapper');
-
-let inputData = '';
 
 async function onFormSubmit(event) {
   event.preventDefault();
   trendingFilms.currentPage = 1;
-  mainSection.innerHTML = '';
-  inputData = event.currentTarget.elements.searchData.value;
-  if (inputData === '') {
-    return Notiflix.Notify.warning('try to find something');
+  refs.mainSection.innerHTML = '';
+  trendingFilms.inputData = event.currentTarget.elements.searchData.value;
+  if (trendingFilms.inputData === '') {
+    return checkingEmptyField();
   }
   try {
-    const result = await trendingFilms.getMovieSearch(inputData);
-    loader.classList.remove('hidden');
+    const result = await trendingFilms.getMovieSearch();
+    refs.loader.classList.remove('hidden');
     if (result.data.total_results === 0) {
       noFilmFound();
-      loader.classList.add('hidden');
+      refs.loader.classList.add('hidden');
       return;
     }
     result.data.results.forEach(film => {
@@ -50,22 +46,21 @@ async function onFormSubmit(event) {
         vote_average
       );
     });
-    loader.classList.add('hidden');
+    refs.loader.classList.add('hidden');
   } catch (error) {
-    console.log('error');
+    console.log(error);
   }
   infinteScroll();
 }
 
-searchForm?.addEventListener('submit', onFormSubmit);
+refs.searchForm.addEventListener('submit', onFormSubmit);
 
 async function LoadMorePhoto() {
   trendingFilms.currentPage += 1;
   try {
-    const result = await trendingFilms.getMovieSearch(inputData);
+    const result = await trendingFilms.getMovieSearch();
     if (result.data.total_pages === 1) {
-      endOfSearch();
-      return;
+      return endOfSearch();
     }
     result.data.results.forEach(film => {
       const {
@@ -91,7 +86,7 @@ async function LoadMorePhoto() {
       );
     });
   } catch (error) {
-    console.log('error');
+    console.log(error);
   }
   infinteScroll();
 }
@@ -120,8 +115,8 @@ const noFilmFound = () =>
   Notiflix.Notify.info(
     'Search result was NOT successful. Enter the correct movie name and try again!'
   );
-const alertImagesFound = data =>
-  Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
+const checkingEmptyField = () =>
+  Notiflix.Notify.success(`try to find something.`);
 
 const endOfSearch = () =>
   Notiflix.Notify.info(

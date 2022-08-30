@@ -6,11 +6,12 @@ const API_KEY = '2bbca05b4a0698db2e0a185255a0cc70&page';
 export default class filmsAPI {
   constructor() {
     this.currentPage = 0;
-    this.lang = 'uk';
+    this.inputData = '';
+    this.lang = 'en-US';
     this.genres = [];
-    this.genreId = 0;
-    this.popularity = '';
-    this.year = '';
+    this.genreId = 'default';
+    this.popularity = 'popularity';
+    this.year = '2022';
   }
   async getTrendingFilms() {
     const response = await axios.get(
@@ -24,9 +25,9 @@ export default class filmsAPI {
     );
     return response;
   }
-  async getMovieSearch(str) {
+  async getMovieSearch() {
     const response = await axios.get(
-      `${BASE_URL}search/movie?api_key=${API_KEY}&query=${str}&page=${this.currentPage}&include_adult=false&language=${this.lang}`
+      `${BASE_URL}search/movie?api_key=${API_KEY}&query=${this.inputData}&page=${this.currentPage}&include_adult=false&language=${this.lang}`
     );
     return response;
   }
@@ -43,27 +44,21 @@ export default class filmsAPI {
     return response;
   }
   //searching form with genres
-  async getMoviesByGenres(genreId) {
+  async getMoviesByGenres() {
     const response = await axios.get(
-      `${BASE_URL}discover/movie?api_key=${API_KEY}&language=${this.lang}&include_adult=false&include_video=false&page=${this.currentPage}&with_genres=${this.genreId}`
+      `${BASE_URL}discover/movie?api_key=${API_KEY}&language=${this.lang}&sort_by=${this.popularity}.desc&include_adult=false&include_video=false&page=${this.currentPage}&with_genres=${this.genreId}&primary_release_date.gte=${this.year}-01-01&primary_release_date.lte=${this.year}-12-31`
     );
     return response;
   }
   async getMoviesByYear() {
     const response = await axios.get(
-      `${BASE_URL}discover/movie?api_key=${API_KEY}&language=${this.lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this.currentPage}&primary_release_date.gte=${this.year}-01-01&primary_release_date.lte=${this.year}-12-31`
+      `${BASE_URL}discover/movie?api_key=${API_KEY}&language=${this.lang}&sort_by=${this.popularity}.desc&include_adult=false&include_video=false&page=${this.currentPage}&with_genres=${this.genreId}&primary_release_date.gte=${this.year}-01-01&primary_release_date.lte=${this.year}-12-31`
     );
     return response;
   }
   async getMoviesByPopularity() {
     const response = await axios.get(
-      `${BASE_URL}discover/movie?api_key=${API_KEY}&language=${this.lang}&sort_by=${this.popularity}.desc&include_adult=false&page=${this.currentPage}`
-    );
-    return response;
-  }
-  async getMorePopularMovies() {
-    const response = await axios.get(
-      `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=${this.lang}&page=${this.currentPage}`
+      `${BASE_URL}discover/movie?api_key=${API_KEY}&language=${this.lang}&sort_by=${this.popularity}.desc&include_adult=false&include_video=false&page=${this.currentPage}&with_genres=${this.genreId}&primary_release_date.gte=${this.year}-01-01&primary_release_date.lte=${this.year}-12-31`
     );
     return response;
   }
