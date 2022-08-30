@@ -7,17 +7,38 @@ body {
 }
 
 .theme {
-  position: fixed;
+  position: absolute;
   cursor: pointer;
   z-index: 1000;
-  top: 50%;
-  left: 10px;
+  bottom: -91px;
+  left: 30px;
   transform: translateY(-50%);
-  padding: 10px;
-  background: #ffffff;
+  padding: 9px;
+  background: #c20000;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(39, 38, 40, 0.4);
+  border: 2px solid var(--secondary-text-color);
 }
 .dark {
   background: rgb(11, 11, 12);
+
+  h2 {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  img {
+    border-bottom: 1px solid var(--secondary-text-color);
+  }
+  .card__item {
+    border: 1px solid var(--secondary-text-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px rgba(248, 246, 246, 0.856),
+      0 5px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+  .card__info {
+    text-align: center;
+  }
 }
