@@ -1,4 +1,5 @@
-const mainSection = document.querySelector('.card__list');
+import { refs } from './refs';
+
 export const renderCard = function (
   id,
   poster_path,
@@ -26,5 +27,5 @@ export const renderCard = function (
             } | ${
     release_date ? release_date.slice(0, 4) : first_air_date.slice(0, 4)
   }</p></div></a>`;
-  mainSection.appendChild(movieEl);
+  refs.mainSection.appendChild(movieEl);
 };
