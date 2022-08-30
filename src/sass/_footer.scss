@@ -1,8 +1,9 @@
-.footer{
-  position: relative;
+
+  .footer {
+    opacity: 0.6;
     display: flex;
     justify-content: center;
-    padding: 30px 0;
+    padding: 20px 0;
     background-color: white;
     position: fixed;
     right: 0;
@@ -10,47 +11,86 @@
     text-align: center; 
     width: 99%;   
     font-size: 19px;
-    font-weight: bold;
-    color: #fafaff; 
-  color: #545454;
+
+      
+      @media screen and (max-width: 767px) {
+        margin: 0 auto;
+        font-size: 14px;
+        line-height: 1.18;
+      }
+    
+      @media screen and (min-width: 768px) {
+        display: flex;
+        font-size: 16px;
+        line-height: 1.14;
+      }
+  }
   
-  @media screen and (max-width: 767px) {
-    margin: 0 auto;
-    font-size: 14px;
-    line-height: 1.18;
-  }
+  .footer-copyright {
 
-  @media screen and (min-width: 768px) {
+    color: #545454;
+    
+    justify-content: center;
+    text-align: center;
+    // align-items: center;
+  
+    @media screen and (max-width: 767px) {
+      margin: 0 auto;
+      font-size: 14px;
+      line-height: 1.18;
+    }
+  
+    @media screen and (min-width: 768px) {
+      display: flex;
+      font-size: 16px;
+      line-height: 1.14;
+    }
+  }
+  
+  .footer-copyright--right {
     display: flex;
-    font-size: 16px;
-    line-height: 1.14;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  
+    @media screen and (max-width: 767px) {
+      margin-top: 10px;
+    }
+  
+    @media screen and (min-width: 768px) {
+      margin-left: 3px;
+    }
+  
+    @media screen and (min-width: 1024px) {
+      position: relative;
+    }
   }
-}
-
-.footer__button{
-    background-color: transparent;
-    border: none;
-    text-decoration: underline;
+  
+  .footer-copyright--text {
+    @media screen and (min-width: 768px) {
+      display: flex;
+    }
+  }
+  
+  //!============ btn GoIT Students
+  .footer-copyright--btn {
+    // position: relative;
     color: #545454;
     border: none;
     cursor: pointer;
-    
-}
-
-.footer__text{
+    background-color: transparent;
+    text-decoration-line: underline;
   
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.18;
-    color: #545454;
-
-    @media screen and (min-width: 768px) {
-      display: flex;
-}
-}
-.heart {
+    &:hover,
+    &:focus {
+      color: #ff6b08;
+    }
+  }
+ 
+  //!============ heart
+  .heart {
     animation: heartbeat 1s infinite;
-    background-color: rgb(255, 107, 8);
+    background-color: var(--accent-color);
     display: inline-block;
     height: 10px;
     margin: 0 10px;
@@ -61,7 +101,7 @@
     &:before,
     &:after {
       content: '';
-      background-color: rgb(255, 107, 8);
+      background-color: var(--accent-color);
       border-radius: 50%;
       height: 10px;
       position: absolute;
@@ -90,4 +130,4 @@
       transform: scale(1.2) rotate(-45deg);
     }
   }
- 
+  
