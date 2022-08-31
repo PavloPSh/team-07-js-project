@@ -214,8 +214,7 @@ function onModalClose(e) {
     e.keyCode === 27 ||
     e.target.classList.contains('popup-button__close')
   ) {
-    renderQueueCard();
-    renderWatchedCard();
+    window.location.reload()
     modalRef.classList.remove('popup');
     modalRef.innerHTML = '';
   }
