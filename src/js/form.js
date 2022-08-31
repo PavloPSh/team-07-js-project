@@ -35,8 +35,6 @@ async function onFormSubmit(event) {
         release_date,
       } = film;
       let genre = getGenreName(genre_ids);
-      console.log("🚀 ~ file: form.js ~ line 38 ~ onFormSubmit ~ genre", genre + id)
-      
       renderCard(
         id,
         poster_path,
@@ -57,7 +55,7 @@ async function onFormSubmit(event) {
 
 refs.searchForm?.addEventListener('submit', onFormSubmit);
 
-async function LoadMorePhoto() {
+async function loadMorePhoto() {
   trendingFilms.currentPage += 1;
   try {
     const result = await trendingFilms.getMovieSearch();
@@ -100,7 +98,7 @@ const infinteObserver = new IntersectionObserver(
       // перестаємо його відслідковувати
       observer.unobserve(entry.target);
       // Завантажуємо нову порцію контенту
-      LoadMorePhoto();
+      loadMorePhoto();
     }
   },
   { threshold: 0.5 }

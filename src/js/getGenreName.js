@@ -1,7 +1,7 @@
 import filmsAPI from './apiServiсe';
 const ganreName = new filmsAPI();
 
-async function FetchGenreName() {
+async function fetchGenreName() {
   const result = await ganreName.getGenres();
   try {
     result.data.genres.forEach(genre => {
@@ -12,16 +12,16 @@ async function FetchGenreName() {
   }
 }
 
-FetchGenreName();
+fetchGenreName();
 
 export const getGenreName = function (ids) {
   let genre = [];
-  if(ids.length === 0){
-    return undefined
-  }else{
-  ids.forEach(id => {
-    genre.push(localStorage.getItem(id));
-  });
-  };
-  return genre
+  if (ids.length === 0) {
+    return undefined;
+  } else {
+    ids.forEach(id => {
+      genre.push(localStorage.getItem(id));
+    });
+  }
+  return genre;
 };

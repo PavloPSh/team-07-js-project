@@ -168,7 +168,7 @@ async function markupMoviesByYear() {
   }
   infinteScrollByYear();
 }
-async function LoadMoreMovieByGenres() {
+async function loadMoreMovieByGenres() {
   filters.currentPage += 1;
   try {
     const result = await filters.getMoviesByGenres();
@@ -200,7 +200,7 @@ async function LoadMoreMovieByGenres() {
   }
   infinteScrollByGenres();
 }
-async function LoadMoreMovieByPopularity() {
+async function loadMoreMovieByPopularity() {
   filters.currentPage += 1;
   try {
     const result = await filters.getMoviesByPopularity();
@@ -232,7 +232,7 @@ async function LoadMoreMovieByPopularity() {
   }
   infinteScrollByPopularity();
 }
-async function LoadMoreMovieByYear() {
+async function loadMoreMovieByYear() {
   filters.currentPage += 1;
   try {
     const result = await filters.getMoviesByYear();
@@ -272,7 +272,7 @@ const infinteObserverByGenres = new IntersectionObserver(
       // перестаємо його відслідковувати
       observer.unobserve(entry.target);
       // Завантажуємо нову порцію контенту
-      LoadMoreMovieByGenres();
+      loadMoreMovieByGenres();
     }
   },
   { threshold: 0.5 }
@@ -292,7 +292,7 @@ const infinteObserverByPopularity = new IntersectionObserver(
       // перестаємо його відслідковувати
       observer.unobserve(entry.target);
       // Завантажуємо нову порцію контенту
-      LoadMoreMovieByPopularity();
+      loadMoreMovieByPopularity();
     }
   },
   { threshold: 0.5 }
@@ -312,7 +312,7 @@ const infinteObserverByYear = new IntersectionObserver(
       // перестаємо його відслідковувати
       observer.unobserve(entry.target);
       // Завантажуємо нову порцію контенту
-      LoadMoreMovieByYear();
+      loadMoreMovieByYear();
     }
   },
   { threshold: 0.5 }
