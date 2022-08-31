@@ -9,4 +9,5 @@ export const refs = {
   loader: document.querySelector('.loader__wrapper'),
   logoLink: document.querySelector('.header__logo'),
   homeBtn: document.querySelector('.header__nav-link'),
+  toTopBtn: document.querySelector('.btn-to-top'),
 };

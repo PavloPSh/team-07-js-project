@@ -4,8 +4,8 @@ import './modal-footer';
 import { getGenreName } from './getGenreName';
 import { refs } from './refs';
 
-import filmsAPI from './apiServiсe';
-const trendingFilms = new filmsAPI();
+import FilmsAPI from './apiServiсe';
+const trendingFilms = new FilmsAPI();
 
 async function onFormSubmit(event) {
   event.preventDefault();

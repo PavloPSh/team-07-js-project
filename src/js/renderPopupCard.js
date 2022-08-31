@@ -1,5 +1,5 @@
-import filmsAPI from './apiServiсe';
-const trendingFilms = new filmsAPI();
+import FilmsAPI from './apiServiсe';
+const trendingFilms = new FilmsAPI();
 const filmCard = document.querySelector('.section');
 const popupCards = document.querySelector('.modal');
 

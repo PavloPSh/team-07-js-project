@@ -1,9 +1,9 @@
-import filmsAPI from './apiServiсe';
+import FilmsAPI from './apiServiсe';
 import { renderCard } from './renderCard';
 import { getGenreName } from './getGenreName';
 import { refs } from './refs';
 
-const trendingFilms = new filmsAPI();
+const trendingFilms = new FilmsAPI();
 
 async function homeTrendingFilms(event) {
   event.preventDefault();

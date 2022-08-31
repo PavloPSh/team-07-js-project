@@ -1,5 +1,5 @@
-import filmsAPI from './apiServiсe';
-const ganreName = new filmsAPI();
+import FilmsAPI from './apiServiсe';
+const ganreName = new FilmsAPI();
 
 async function fetchGenreName() {
   const result = await ganreName.getGenres();

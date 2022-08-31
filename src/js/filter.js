@@ -4,8 +4,8 @@ import { renderCard } from './renderCard';
 import { getGenreName } from './getGenreName';
 import Notiflix from 'notiflix';
 
-import filmsAPI from './apiServiсe';
-const filters = new filmsAPI();
+import FilmsAPI from './apiServiсe';
+const filters = new FilmsAPI();
 
 let genresList = genres;
 

@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = `https://api.themoviedb.org/3/`;
 const API_KEY = '2bbca05b4a0698db2e0a185255a0cc70&page';
 
-export default class filmsAPI {
+export default class FilmsAPI {
   constructor() {
     this.currentPage = 0;
     this.inputData = '';
