@@ -31,8 +31,16 @@
 
         <div class="test">
             <form id="sendToDBForm">
-                <button id="sendToDBFormBtn" type="submit" disabled>Add to cloud</button>
-                <button id="showMovieFromDB" type="submit" disabled>Get from cloud</button>
+                <button id="sendToDBFormBtn" class="icon-cloud-btn" type="submit" disabled>
+                    <svg class="icon-cloud">
+                        <use href="/src/images/sprite.svg#icon-cloud-upload"></use>
+                    </svg>
+                </button>
+                <button id="showMovieFromDB" class="icon-cloud-btn" type="submit" disabled>
+                    <svg class="icon-cloud">
+                        <use href="/src/images/sprite.svg#icon-cloud-download"></use>
+                    </svg>
+                </button>
 
             </form>
         </div>

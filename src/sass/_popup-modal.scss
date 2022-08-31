@@ -50,20 +50,22 @@
     background-color: transparent;
     transition: 0.6s;
 
-            &:hover,
-            &:focus {
-                border: 1px solid var(--accent-color);       
-            }
+            // &:hover,
+            // &:focus {
+            //     border: 1px solid var(--accent-color); 
+                 
+            // }
     }
 
     .popup-button__close {
         width: 18px;
         height: 18px;
         fill: var(--accent-color);
+        
 
             &:hover,
             &:focus {
-                fill: var(--light-color);        
+                fill: black;        
             }
     }
 
