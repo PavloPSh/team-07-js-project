@@ -3,7 +3,7 @@ import { renderCard } from './renderCard';
 import { onEmptyMoviesStorage } from './watched-btn';
 
 const queueBtn = document.querySelector('button[data-action="queue"]');
-const watchedBtn = document.querySelector('button[data-action="watched"]');
+const watchedBtn = document?.querySelector('button[data-action="watched"]');
 const mainSection = document.querySelector('.card__list');
 const queueMovies = JSON.parse(localStorage.getItem('Queque:'));
 const clearBtn = document.querySelector('.clear-btn');
@@ -17,7 +17,7 @@ export function onQueueBtnClick() {
   watchedBtn.classList.remove('current-btn');
   queueBtn.classList.add('current-btn');
   clearBtn.classList.add('clear-btn--visible');
-  localStorage.setItem('last-active-btn', 'queueButton');
+ //localStorage.setItem('last-active-btn', 'queueButton');
 
   if (queueMovies === null || queueMovies.length === 0) {
     clearBtn.classList.remove('clear-btn--visible');
@@ -35,6 +35,8 @@ export function onQueueBtnClick() {
   renderQueueCard();
   loader.classList.add('hidden');
 }
+
+queueBtn?.addEventListener('click', onQueueBtnClick);
 
 export function renderQueueCard() {
   const queueList = queueMovies.map(film => {
