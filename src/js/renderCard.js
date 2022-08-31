@@ -25,7 +25,11 @@ export const renderCard = function (
             <p class="card__genre">${
               genre ? genre.slice(0, 2).join(', ') + ', Other' : 'Unknown'
             } | ${
-    release_date ? release_date.slice(0, 4) : release_date ? first_air_date.slice(0, 4) : 'Unknown'
+    release_date
+      ? release_date.slice(0, 4)
+      : first_air_date
+      ? first_air_date.slice(0, 4)
+      : 'Unknown'
   }</p></div></a>`;
   refs.mainSection.appendChild(movieEl);
 };

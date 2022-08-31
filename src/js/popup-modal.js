@@ -1,6 +1,6 @@
-import filmsAPI from './apiServiсe';
+import FilmsAPI from './apiServiсe';
 import { renderMovieModal } from './renderPopupCard';
-const trendingFilms = new filmsAPI();
+const trendingFilms = new FilmsAPI();
 const filmCard = document.querySelector('.section');
 filmCard.addEventListener('click', onFilmCardClick);
 
@@ -16,7 +16,8 @@ async function fetchFilmData(filmID) {
 function onFilmCardClick(e) {
   e.preventDefault();
   if (
-    e.target.closest('.card__link')?.querySelector('.card__poster') === undefined
+    e.target.closest('.card__link')?.querySelector('.card__poster') ===
+    undefined
   ) {
     return;
   }
@@ -100,9 +101,9 @@ function onFilmCardClick(e) {
             JSON.stringify(watchedFilmsArray)
           );
           isInWatched = false;
-          e.target.innerText = "Add to watched";
+          e.target.innerText = 'Add to watched';
           // console.log('removed from watched ');
-          return
+          return;
         }
 
         // logic to add movie if this movie is not in watchedFilmsArray
@@ -113,10 +114,10 @@ function onFilmCardClick(e) {
             JSON.stringify(watchedFilmsArray)
           );
           isInWatched = true;
-          e.target.innerText = "Remove to watched";
+          e.target.innerText = 'Remove to watched';
           // console.log("add to watched ");
-          return
-          }
+          return;
+        }
       }
 
       // logic for button "add to queue"
@@ -143,21 +144,21 @@ function onFilmCardClick(e) {
           queueFilmsArray.splice(indexQueueMovieRemove, 1);
           localStorage.setItem(STORAGE_QUEUE, JSON.stringify(queueFilmsArray));
           isInQueue = false;
-          e.target.innerText = "Add to queue";
+          e.target.innerText = 'Add to queue';
           // console.log('removed from queue');
-          return
+          return;
         }
         // logic to add movie if this movie is not in queueFilmsArray
         else {
           queueFilmsArray.push(film);
           localStorage.setItem(STORAGE_QUEUE, JSON.stringify(queueFilmsArray));
           isInQueue = true;
-          e.target.innerText = "Remove from queue";
+          e.target.innerText = 'Remove from queue';
           // console.log("add to queue ");
-          return
-          }
+          return;
         }
-      });
+      }
+    });
 
     // popup render
     const {
@@ -172,11 +173,11 @@ function onFilmCardClick(e) {
       genres,
     } = film;
     const genre = [];
-    if(genres.length === 0){
+    if (genres.length === 0) {
       genre.push('Unknown');
-    }else{
+    } else {
       genres.forEach(res => genre.push(res.name));
-    }; 
+    }
     try {
       setTimeout(() => {
         renderMovieModal(
@@ -208,7 +209,7 @@ function onModalClose(e) {
     e.target.classList.contains('popup') ||
     e.keyCode === 27 ||
     e.target.classList.contains('popup-button__close')
-    ) {
+  ) {
     modalRef.classList.remove('popup');
     modalRef.innerHTML = '';
   }

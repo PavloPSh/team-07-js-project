@@ -1,11 +1,11 @@
-import filmsAPI from './apiServiсe';
+import FilmsAPI from './apiServiсe';
 import { renderCard } from './renderCard';
 import { getGenreName } from './getGenreName';
 import { refs } from './refs';
 
-const trendingFilms = new filmsAPI();
+const trendingFilms = new FilmsAPI();
 
-async function TrendingFilms(event) {
+async function homeTrendingFilms(event) {
   event.preventDefault();
   refs.searchForm.firstElementChild.value = '';
   trendingFilms.currentPage = 1;
@@ -42,11 +42,11 @@ async function TrendingFilms(event) {
   }
   infinteScroll();
 }
-refs.logoLink.addEventListener('click', TrendingFilms);
-refs.homeBtn.addEventListener('click', TrendingFilms);
-window.addEventListener('load', TrendingFilms);
+refs.logoLink.addEventListener('click', homeTrendingFilms);
+refs.homeBtn.addEventListener('click', homeTrendingFilms);
+window.addEventListener('load', homeTrendingFilms);
 
-async function LoadMorePhoto() {
+async function loadMorePhoto() {
   trendingFilms.currentPage += 1;
   try {
     const result = await trendingFilms.getTrendingFilms();
@@ -86,7 +86,7 @@ const infinteObserver = new IntersectionObserver(
       // перестаємо його відслідковувати
       observer.unobserve(entry.target);
       // Завантажуємо нову порцію контенту
-      LoadMorePhoto();
+      loadMorePhoto();
     }
   },
   { threshold: 0.5 }

@@ -1,9 +1,9 @@
-import filmsAPI from './apiServiсe';
+import FilmsAPI from './apiServiсe';
 import { renderMovieModal } from './renderPopupCard';
 import { renderQueueCard } from './queue-btn';
 import { renderWatchedCard } from './watched-btn';
 
-const trendingFilms = new filmsAPI();
+const trendingFilms = new FilmsAPI();
 const filmCard = document.querySelector('.section');
 filmCard.addEventListener('click', onFilmCardClick);
 
@@ -176,12 +176,12 @@ function onFilmCardClick(e) {
       genres,
     } = film;
     const genre = [];
-   
-    if(genres.length === 0){
+
+    if (genres.length === 0) {
       genre.push('Unknown');
-    }else{
+    } else {
       genres.forEach(res => genre.push(res.name));
-    }; 
+    }
     try {
       setTimeout(() => {
         renderMovieModal(
