@@ -8,7 +8,6 @@ const mainSection = document.querySelector('.card__list');
 const queueMovies = JSON.parse(localStorage.getItem('Queque:'));
 const clearBtn = document.querySelector('.clear-btn');
 const loader = document.querySelector('.loader__wrapper');
-console.log(queueMovies);
 
 queueBtn?.addEventListener('click', onQueueBtnClick);
 clearBtn?.addEventListener('click', onClearBtnClick);
@@ -21,7 +20,6 @@ export function onQueueBtnClick() {
   localStorage.setItem('last-active-btn', 'queueButton');
 
   if (queueMovies === null || queueMovies.length === 0) {
-    mainSection.innerHTML = '';
     clearBtn.classList.remove('clear-btn--visible');
     clearBtn.classList.add('clear-btn');
     onEmptyMoviesStorage();
@@ -41,7 +39,6 @@ export function onQueueBtnClick() {
 export function renderQueueCard() {
   const queueList = queueMovies.map(film => {
     const genres = film.genres.map(genre => genre.name);
-    console.log(genres);
 
     renderCard(
       film.id,

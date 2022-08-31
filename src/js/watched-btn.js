@@ -8,23 +8,19 @@ const mainSection = document.querySelector('.card__list');
 const watchedMovies = JSON.parse(localStorage.getItem('Watched:'));
 const clearBtn = document.querySelector('.clear-btn');
 const loader = document.querySelector('.loader__wrapper');
-console.log(watchedMovies);
 
 watchedBtn?.addEventListener('click', onWatchBtnClick);
 clearBtn?.addEventListener('click', onClearBtnClick);
 
-// onWatchBtnClick();
 firstBtnActive();
 
 function firstBtnActive() {
   if (localStorage.getItem('last-active-btn') === 'watchedButton') {
-    console.log(localStorage.getItem('last-active-btn'));
-    return onWatchBtnClick();
+    return onWatchBtnClick()
   }
 
   if (localStorage.getItem('last-active-btn') === 'queueButton') {
-    console.log(localStorage.getItem('last-active-btn'));
-    return onQueueBtnClick();
+    return onQueueBtnClick()
   } else {
     onWatchBtnClick();
   }
@@ -38,7 +34,6 @@ function onWatchBtnClick() {
   localStorage.setItem('last-active-btn', 'watchedButton');
 
   if (watchedMovies === null || watchedBtn.length === 0) {
-    mainSection.innerHTML = '';
     clearBtn.classList.remove('clear-btn--visible');
     clearBtn.classList.add('clear-btn');
     onEmptyMoviesStorage();
@@ -58,7 +53,6 @@ function onWatchBtnClick() {
 export function renderWatchedCard() {
   const watchedL = watchedMovies.map(film => {
     const genres = film.genres.map(genre => genre.name);
-    console.log(genres);
 
     renderCard(
       film.id,
@@ -74,8 +68,8 @@ export function renderWatchedCard() {
 }
 
 export function onEmptyMoviesStorage() {
-  const warningText = `<li class="card__notification">You don't have any movies added</li>`;
-  mainSection.innerHTML = warningText;
+  const notificationText = `<li class="card__notification">You don't have any movies added</li>`;
+  mainSection.innerHTML = notificationText;
 }
 
 function onClearBtnClick() {
