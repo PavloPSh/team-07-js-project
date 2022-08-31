@@ -22,7 +22,7 @@ function firstBtnActive() {
   if (localStorage.getItem('last-active-btn') === 'queueButton') {
     return onQueueBtnClick()
   } else {
-    onWatchBtnClick()
+    onWatchBtnClick();
   }
 }
 
@@ -38,7 +38,10 @@ function onWatchBtnClick() {
     clearBtn.classList.add('clear-btn');
     onEmptyMoviesStorage();
     loader.classList.add('hidden');
-    return Notiflix.Notify.failure('You need to add at least 1 movie.', {timeout: 1500, clickToClose: true});
+    return Notiflix.Notify.failure('You need to add at least 1 movie.', {
+      timeout: 1500,
+      clickToClose: true,
+    });
   }
 
   mainSection.innerHTML = '';
@@ -47,7 +50,7 @@ function onWatchBtnClick() {
   loader.classList.add('hidden');
 }
 
-function renderWatchedCard() {
+export function renderWatchedCard() {
   const watchedL = watchedMovies.map(film => {
     const genres = film.genres.map(genre => genre.name);
 

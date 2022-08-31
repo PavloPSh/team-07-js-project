@@ -1,5 +1,8 @@
 import filmsAPI from './apiServiсe';
 import { renderMovieModal } from './renderPopupCard';
+import { renderQueueCard } from './queue-btn';
+import { renderWatchedCard } from './watched-btn';
+
 const trendingFilms = new filmsAPI();
 const filmCard = document.querySelector('.section');
 filmCard.addEventListener('click', onFilmCardClick);
@@ -16,7 +19,8 @@ async function fetchFilmData(filmID) {
 function onFilmCardClick(e) {
   e.preventDefault();
   if (
-    e.target.closest('.card__link')?.querySelector('.card__poster') === undefined
+    e.target.closest('.card__link')?.querySelector('.card__poster') ===
+    undefined
   ) {
     return;
   }
@@ -210,9 +214,9 @@ function onModalClose(e) {
     e.keyCode === 27 ||
     e.target.classList.contains('popup-button__close')
   ) {
-    window.location.reload();
+    renderQueueCard();
+    renderWatchedCard();
     modalRef.classList.remove('popup');
     modalRef.innerHTML = '';
   }
-  
 }
