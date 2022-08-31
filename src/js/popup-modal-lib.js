@@ -105,7 +105,7 @@ function onFilmCardClick(e) {
           );
           isInWatched = false;
           e.target.innerText = 'Add to watched';
-          console.log('removed from watched ');
+          // console.log('removed from watched ');
           return;
         }
 
@@ -118,7 +118,7 @@ function onFilmCardClick(e) {
           );
           isInWatched = true;
           e.target.innerText = 'Remove to watched';
-          console.log('add to watched ');
+          // console.log('add to watched ');
           return;
         }
       }
@@ -148,7 +148,7 @@ function onFilmCardClick(e) {
           localStorage.setItem(STORAGE_QUEUE, JSON.stringify(queueFilmsArray));
           isInQueue = false;
           e.target.innerText = 'Add to queue';
-          console.log('removed from queue');
+          // console.log('removed from queue');
           return;
         }
         // logic to add movie if this movie is not in queueFilmsArray
@@ -157,7 +157,7 @@ function onFilmCardClick(e) {
           localStorage.setItem(STORAGE_QUEUE, JSON.stringify(queueFilmsArray));
           isInQueue = true;
           e.target.innerText = 'Remove from queue';
-          console.log('add to queue ');
+          // console.log('add to queue ');
           return;
         }
       }

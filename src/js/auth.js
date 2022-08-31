@@ -303,7 +303,7 @@ function sendToDBFormHandler(e) {
       queueMovies:queueFilmsArrayDB,
       date: new Date().toJSON()
     }
-    console.log(movieBase);
+    // console.log(movieBase);
 
     // sbm_btn.disabled = true
   addInfoToDB(movieBase)
