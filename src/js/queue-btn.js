@@ -26,7 +26,10 @@ export function onQueueBtnClick() {
     clearBtn.classList.add('clear-btn');
     onEmptyMoviesStorage();
     loader.classList.add('hidden');
-    return Notiflix.Notify.failure('You need to add at least 1 movie.', {timeout: 1500, clickToClose: true});
+    return Notiflix.Notify.failure('You need to add at least 1 movie.', {
+      timeout: 1500,
+      clickToClose: true,
+    });
   }
 
   mainSection.innerHTML = '';
@@ -35,7 +38,7 @@ export function onQueueBtnClick() {
   loader.classList.add('hidden');
 }
 
-function renderQueueCard() {
+export function renderQueueCard() {
   const queueList = queueMovies.map(film => {
     const genres = film.genres.map(genre => genre.name);
     console.log(genres);
